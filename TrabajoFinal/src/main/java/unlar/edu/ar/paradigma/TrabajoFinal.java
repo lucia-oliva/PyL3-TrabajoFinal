@@ -4,15 +4,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.Principal;
 
 public class TrabajoFinal {
 
     public static void main(String[] args) throws SQLException {
 
+        Principal principal = new Principal();
+        principal.setVisible(true);
+
         try {
             // Obtener la conexión usando la clase SetConexion
             Connection connection = SetConexion.getConnection();
-            
+
             // Si la conexión es exitosa, muestra un mensaje
             if (connection != null) {
                 System.out.println("Conexión exitosa a la base de datos.");
