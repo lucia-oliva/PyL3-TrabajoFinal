@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;
+import unlar.edu.ar.paradigma.gui.forms.FormularioMotivo;
+import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
+import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.ParteCuerpo;
 
 
 public class Principal extends javax.swing.JFrame {
@@ -18,7 +22,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         initCustomComponents(); 
-         addCustomMenu();
+        addCustomMenu();
     }
 
    
@@ -232,40 +236,54 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void abrirFormularioEmpleado() {
-     JInternalFrame formEmpleado = new JInternalFrame("Formulario Empleado", true, true, true, true);
-    FormularioEmpleado formularioEmpleado = new FormularioEmpleado();
-    formEmpleado.getContentPane().add(formularioEmpleado);
+    JFrame formEmpleado = new JFrame("Gestion Empleado");
     formEmpleado.setSize(600, 400);
-    desktopPane.add(formEmpleado);
-    formEmpleado.setVisible(true);
+    formEmpleado.setLocationRelativeTo(this); // Centra sobre la ventana principal
+    formEmpleado.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Solo cierra esta ventana
+    FormularioEmpleado formularioEmpleado = new FormularioEmpleado();
+    formEmpleado.add(formularioEmpleado);
+    formEmpleado.setVisible(true);  // Muestra la ventana
+     
     }
 
     private void abrirFormularioMotivo() {
-         JInternalFrame formMotivo = new JInternalFrame("Formulario Motivo", true, true, true, true);
-        formMotivo.setSize(300, 200);
-        desktopPane.add(formMotivo);
-        formMotivo.setVisible(true);
+       JFrame formMotivo = new JFrame("Gestion Motivo");
+        formMotivo.setSize(600, 400);
+        formMotivo.setLocationRelativeTo(this); // Centra sobre la ventana principal
+        formMotivo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Solo cierra esta ventana
+        FormularioMotivo formularioMotivo = new FormularioMotivo();
+        formMotivo.add(formularioMotivo);
+        formMotivo.setVisible(true);  // Muestra la ventana
     }
 
     private void abrirFormularioTipoAccidente() {
-     JInternalFrame formTipoAccidente = new JInternalFrame("Formulario Tipo Accidente", true, true, true, true);
-        formTipoAccidente.setSize(300, 200);
-        desktopPane.add(formTipoAccidente);
-        formTipoAccidente.setVisible(true); 
-    }
-
-    private void abrirFormularioParteCuerpo() {
- JInternalFrame formParteCuerpo = new JInternalFrame("Formulario Parte Cuerpo", true, true, true, true);
-        formParteCuerpo.setSize(300, 200);
-        desktopPane.add(formParteCuerpo);
-        formParteCuerpo.setVisible(true);
+       JFrame formTipoAccidente = new JFrame("Gestion Tipo de Accidentes");
+       formTipoAccidente.setSize(600, 400);
+       formTipoAccidente.setLocationRelativeTo(this); // Centra sobre la ventana principal
+       formTipoAccidente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Solo cierra esta ventana
+       FormularioTipoAccidente formularioTipoAccidente = new FormularioTipoAccidente();
+       formTipoAccidente.add(formularioTipoAccidente);
+       formTipoAccidente.setVisible(true);  // Muestra la ventana
     }
 
     private void abrirFormularioZonaCuerpo() {
-         JInternalFrame formZonaCuerpo = new JInternalFrame("Formulario Zona Cuerpo", true, true, true, true);
-        formZonaCuerpo.setSize(300, 200);
-        desktopPane.add(formZonaCuerpo);
-        formZonaCuerpo.setVisible(true);
+            JFrame formZonaCuerpo = new JFrame("Gestion Zona Cuerpos");
+           formZonaCuerpo.setSize(600, 400);
+           formZonaCuerpo.setLocationRelativeTo(this); // Centra sobre la ventana principal
+           formZonaCuerpo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Solo cierra esta ventana
+           FormularioZonaCuerpo formularioZonaCuerpo = new FormularioZonaCuerpo();
+           formZonaCuerpo.add(formularioZonaCuerpo);
+           formZonaCuerpo.setVisible(true);  // Muestra la ventana
+    }
+
+    private void abrirFormularioParteCuerpo() {
+            JFrame formParteCuerpo = new JFrame("Gestion Parte Cuerpo");
+           formParteCuerpo.setSize(600, 400);
+           formParteCuerpo.setLocationRelativeTo(this); // Centra sobre la ventana principal
+           formParteCuerpo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Solo cierra esta ventana
+           ParteCuerpo formularioParteCuerpo = new ParteCuerpo();
+           formParteCuerpo.add(formularioParteCuerpo);
+           formParteCuerpo.setVisible(true);  // Muestra la ventana
 
     }
 
