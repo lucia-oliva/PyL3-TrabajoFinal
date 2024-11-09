@@ -1,19 +1,24 @@
 package unlar.edu.ar.paradigma.gui;
 
+import java.awt.BorderLayout;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;
 
 
 public class Principal extends javax.swing.JFrame {
     
     
     private JDesktopPane desktopPane;
+    
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-        addCustomMenu();
+        initCustomComponents(); 
+         addCustomMenu();
     }
 
    
@@ -28,7 +33,11 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jdpContenedor = new javax.swing.JDesktopPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmenuOpciones = new javax.swing.JMenu();
         jmiABMAccidentes = new javax.swing.JMenuItem();
@@ -36,16 +45,24 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jdpContenedorLayout = new javax.swing.GroupLayout(jdpContenedor);
-        jdpContenedor.setLayout(jdpContenedorLayout);
-        jdpContenedorLayout.setHorizontalGroup(
-            jdpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jdpContenedorLayout.setVerticalGroup(
-            jdpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
-        );
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton4.setText("jButton4");
+
+        jButton5.setText("jButton5");
+
+        jButton6.setText("jButton6");
 
         jmenuOpciones.setText("Opciones");
 
@@ -68,11 +85,31 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpContenedor)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdpContenedor)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,17 +155,19 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JDesktopPane jdpContenedor;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JMenu jmenuOpciones;
     private javax.swing.JMenuItem jmiABMAccidentes;
     // End of variables declaration//GEN-END:variables
 
   
     private void addCustomMenu() {
-        desktopPane = new JDesktopPane();
-        setContentPane(desktopPane);
         
 
         JMenuBar menuBar = getJMenuBar();  // Obtiene la barra de menú existente
@@ -170,16 +209,13 @@ public class Principal extends javax.swing.JFrame {
         JMenuItem menuItemZonaCuerpo = new JMenuItem("ZonaCuerpo");
         menuItemZonaCuerpo.addActionListener(evt -> abrirFormularioZonaCuerpo());
 
-        JMenuItem menuItemAccidente = new JMenuItem("Accidente");
-        menuItemAccidente.addActionListener(evt -> abrirFormularioAccidente());
-
+     
         // Añadir los ítems al menú de opciones
         menuOpciones.add(menuItemEmpleado);
         menuOpciones.add(menuItemMotivo);
         menuOpciones.add(menuItemTipoAccidente);
         menuOpciones.add(menuItemParteCuerpo);
         menuOpciones.add(menuItemZonaCuerpo);
-        menuOpciones.add(menuItemAccidente);
 
         // Añadir el menú de opciones a la barra de menú existente
         if (menuBar != null) {
@@ -196,10 +232,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void abrirFormularioEmpleado() {
-        JInternalFrame formEmpleado = new JInternalFrame("Formulario Empleado", true, true, true, true);
-        formEmpleado.setSize(300, 200);
-        desktopPane.add(formEmpleado);
-        formEmpleado.setVisible(true);
+     JInternalFrame formEmpleado = new JInternalFrame("Formulario Empleado", true, true, true, true);
+    FormularioEmpleado formularioEmpleado = new FormularioEmpleado();
+    formEmpleado.getContentPane().add(formularioEmpleado);
+    formEmpleado.setSize(600, 400);
+    desktopPane.add(formEmpleado);
+    formEmpleado.setVisible(true);
     }
 
     private void abrirFormularioMotivo() {
@@ -231,11 +269,40 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-    private void abrirFormularioAccidente() {
-           JInternalFrame formAccidente = new JInternalFrame("Formulario Accidente", true, true, true, true);
-        formAccidente.setSize(300, 200);
-        desktopPane.add(formAccidente);
-        formAccidente.setVisible(true);
+   //Modificando la tabla y botones
+
+    private void initCustomComponents() {
+        
+        DefaultTableModel model = new DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Fecha Accidente", "Ubicacion", "Legajo Empleado", "Motivo", "Tipo Accidente", "IzDer"
+            }
+        );
+        jTable2.setModel(model);
+        jTable2.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
+           jTable2.setFillsViewportHeight(true); 
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(800, 400)); 
+
+
+
+        
+         jButton4.setText("Agregar");
+
+        jButton5.setText("Modificar");
+
+        jButton6.setText("Eliminar");
+        
+        setLayout(new BorderLayout()); 
+        add(jScrollPane2, BorderLayout.CENTER);
+        
+        revalidate();
+        repaint();
 
     }
 }
