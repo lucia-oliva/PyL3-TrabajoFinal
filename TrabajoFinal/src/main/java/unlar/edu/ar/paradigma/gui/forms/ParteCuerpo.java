@@ -4,6 +4,8 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author lucia
@@ -15,6 +17,7 @@ public class ParteCuerpo extends javax.swing.JPanel {
      */
     public ParteCuerpo() {
         initComponents();
+        initCustomComponents();
     }
 
     /**
@@ -96,4 +99,34 @@ public class ParteCuerpo extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void initCustomComponents() {
+        DefaultTableModel model = new DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Tipo"
+            }
+        );
+        jTable1.setModel(model);
+        jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
+
+         jButton1.setText("Agregar");
+
+        jButton2.setText("Modificar");
+
+        jButton3.setText("Eliminar");
+        
+        jButton4.setText("Cerrar");
+        
+       
+        
+        revalidate();
+        repaint();
+    }
 }
