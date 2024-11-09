@@ -1,16 +1,18 @@
 package unlar.edu.ar.paradigma.objetos;
 
+import java.sql.Date;
+
 public class Accidente {
 
     private Integer numero;
-    private String fecha_del_accidente;
+    private Date fecha_del_accidente;
     private String ubicacion;
     private Integer legajo;
     private Integer codigo_motivo;
     private Integer codigo_tipo_accidente;
     private Integer izqDer;
 
-    public Accidente(Integer numero, String fecha_del_accidente, String ubicacion, Integer legajo,
+    public Accidente(Integer numero, Date fecha_del_accidente, String ubicacion, Integer legajo,
             Integer codigo_motivo, Integer codigo_tipo_accidente, Integer izqDer) {
         this.numero = numero;
         this.fecha_del_accidente = fecha_del_accidente;
@@ -29,11 +31,11 @@ public class Accidente {
         this.numero = numero;
     }
 
-    public String getFecha_del_accidente() {
+    public Date getFecha_del_accidente() {
         return fecha_del_accidente;
     }
 
-    public void setFecha_del_accidente(String fecha_del_accidente) {
+    public void setFecha_del_accidente(Date fecha_del_accidente) {
         this.fecha_del_accidente = fecha_del_accidente;
     }
 
