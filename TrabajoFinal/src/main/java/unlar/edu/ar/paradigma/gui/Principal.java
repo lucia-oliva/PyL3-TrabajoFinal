@@ -1,12 +1,15 @@
 package unlar.edu.ar.paradigma.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Frame;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;
 import unlar.edu.ar.paradigma.gui.forms.FormularioMotivo;
 import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
 import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.GenericFormAgregar;
 import unlar.edu.ar.paradigma.gui.forms.ParteCuerpo;
 
 
@@ -311,6 +314,18 @@ public class Principal extends javax.swing.JFrame {
 
         
          jButton4.setText("Agregar");
+         jButton4.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> columnasEmpleado = List.of("ID", "Fecha Accidente", "Ubicacion","Legajo Empleado", "Mootivo", "Tipo Accidente", "IzqDer");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormAgregar formulario = new GenericFormAgregar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                columnasEmpleado
+            );
+            formulario.setVisible(true);
+          });
 
         jButton5.setText("Modificar");
 

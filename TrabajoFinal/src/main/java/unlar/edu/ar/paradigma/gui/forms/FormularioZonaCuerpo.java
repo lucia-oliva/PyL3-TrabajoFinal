@@ -4,6 +4,9 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
+import java.awt.Frame;
+import java.util.List;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -121,6 +124,18 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
 
          jButton1.setText("Agregar");
+           jButton1.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> columnasEmpleado = List.of("IzqDer", "Codigo");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormAgregar formulario = new GenericFormAgregar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                columnasEmpleado
+            );
+            formulario.setVisible(true);
+          });
 
         jButton2.setText("Modificar");
 
