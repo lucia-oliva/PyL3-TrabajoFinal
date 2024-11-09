@@ -129,9 +129,30 @@ public class Principal extends javax.swing.JFrame {
     private void addCustomMenu() {
         desktopPane = new JDesktopPane();
         setContentPane(desktopPane);
+        
 
         JMenuBar menuBar = getJMenuBar();  // Obtiene la barra de menú existente
         JMenu menuOpciones = new JMenu("Opciones");
+        
+        
+        for (int i = 0; i < menuBar.getMenuCount(); i++) {
+            if (menuBar.getMenu(i).getText().equals("Opciones")) {
+                menuOpciones = menuBar.getMenu(i);
+                break;
+            }
+        }
+        
+      if (menuOpciones != null) {
+            for (int i = 0; i < menuOpciones.getItemCount(); i++) {
+                if (menuOpciones.getItem(i).getText().equals("AMB Accidentes")) {
+                    menuOpciones.remove(i);
+                    break;
+                }
+            }
+        } else {
+            menuOpciones = new JMenu("Opciones");
+            menuBar.add(menuOpciones);
+        }
 
         // Creación de ítems de menú para cada entidad
         JMenuItem menuItemEmpleado = new JMenuItem("Empleado");
