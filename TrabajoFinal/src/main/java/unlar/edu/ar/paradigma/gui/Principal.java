@@ -1,14 +1,24 @@
 package unlar.edu.ar.paradigma.gui;
 
+import javax.swing.*;
+
+
 public class Principal extends javax.swing.JFrame {
+    
+    
+    private JDesktopPane desktopPane;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        addCustomMenu();
     }
 
+   
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,4 +124,97 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jmenuOpciones;
     private javax.swing.JMenuItem jmiABMAccidentes;
     // End of variables declaration//GEN-END:variables
+
+  
+    private void addCustomMenu() {
+        desktopPane = new JDesktopPane();
+        setContentPane(desktopPane);
+
+        JMenuBar menuBar = getJMenuBar();  // Obtiene la barra de menú existente
+        JMenu menuOpciones = new JMenu("Opciones");
+
+        // Creación de ítems de menú para cada entidad
+        JMenuItem menuItemEmpleado = new JMenuItem("Empleado");
+        menuItemEmpleado.addActionListener(evt -> abrirFormularioEmpleado());
+
+        JMenuItem menuItemMotivo = new JMenuItem("Motivo");
+        menuItemMotivo.addActionListener(evt -> abrirFormularioMotivo());
+
+        JMenuItem menuItemTipoAccidente = new JMenuItem("TipoAccidente");
+        menuItemTipoAccidente.addActionListener(evt -> abrirFormularioTipoAccidente());
+
+        JMenuItem menuItemParteCuerpo = new JMenuItem("ParteCuerpo");
+        menuItemParteCuerpo.addActionListener(evt -> abrirFormularioParteCuerpo());
+
+        JMenuItem menuItemZonaCuerpo = new JMenuItem("ZonaCuerpo");
+        menuItemZonaCuerpo.addActionListener(evt -> abrirFormularioZonaCuerpo());
+
+        JMenuItem menuItemAccidente = new JMenuItem("Accidente");
+        menuItemAccidente.addActionListener(evt -> abrirFormularioAccidente());
+
+        // Añadir los ítems al menú de opciones
+        menuOpciones.add(menuItemEmpleado);
+        menuOpciones.add(menuItemMotivo);
+        menuOpciones.add(menuItemTipoAccidente);
+        menuOpciones.add(menuItemParteCuerpo);
+        menuOpciones.add(menuItemZonaCuerpo);
+        menuOpciones.add(menuItemAccidente);
+
+        // Añadir el menú de opciones a la barra de menú existente
+        if (menuBar != null) {
+            menuBar.add(menuOpciones);
+        } else {
+            menuBar = new JMenuBar();
+            menuBar.add(menuOpciones);
+            setJMenuBar(menuBar);
+        }
+        
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+
+    private void abrirFormularioEmpleado() {
+        JInternalFrame formEmpleado = new JInternalFrame("Formulario Empleado", true, true, true, true);
+        formEmpleado.setSize(300, 200);
+        desktopPane.add(formEmpleado);
+        formEmpleado.setVisible(true);
+    }
+
+    private void abrirFormularioMotivo() {
+         JInternalFrame formMotivo = new JInternalFrame("Formulario Motivo", true, true, true, true);
+        formMotivo.setSize(300, 200);
+        desktopPane.add(formMotivo);
+        formMotivo.setVisible(true);
+    }
+
+    private void abrirFormularioTipoAccidente() {
+     JInternalFrame formTipoAccidente = new JInternalFrame("Formulario Tipo Accidente", true, true, true, true);
+        formTipoAccidente.setSize(300, 200);
+        desktopPane.add(formTipoAccidente);
+        formTipoAccidente.setVisible(true); 
+    }
+
+    private void abrirFormularioParteCuerpo() {
+ JInternalFrame formParteCuerpo = new JInternalFrame("Formulario Parte Cuerpo", true, true, true, true);
+        formParteCuerpo.setSize(300, 200);
+        desktopPane.add(formParteCuerpo);
+        formParteCuerpo.setVisible(true);
+    }
+
+    private void abrirFormularioZonaCuerpo() {
+         JInternalFrame formZonaCuerpo = new JInternalFrame("Formulario Zona Cuerpo", true, true, true, true);
+        formZonaCuerpo.setSize(300, 200);
+        desktopPane.add(formZonaCuerpo);
+        formZonaCuerpo.setVisible(true);
+
+    }
+
+    private void abrirFormularioAccidente() {
+           JInternalFrame formAccidente = new JInternalFrame("Formulario Accidente", true, true, true, true);
+        formAccidente.setSize(300, 200);
+        desktopPane.add(formAccidente);
+        formAccidente.setVisible(true);
+
+    }
 }

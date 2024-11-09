@@ -37,7 +37,6 @@ public class AccidenteController implements IABMController<Integer, Accidente> {
                 listaAccidentes.add(accidente);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return listaAccidentes;
     }
@@ -59,7 +58,6 @@ public class AccidenteController implements IABMController<Integer, Accidente> {
                         rs.getInt("izqDer"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -77,7 +75,6 @@ public class AccidenteController implements IABMController<Integer, Accidente> {
             statement.setInt(7, accidente.getIzqDer());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -95,7 +92,6 @@ public class AccidenteController implements IABMController<Integer, Accidente> {
             statement.setInt(7, accidente.getNumero());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -107,7 +103,6 @@ public class AccidenteController implements IABMController<Integer, Accidente> {
             statement.setInt(1, accidente.getNumero());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
