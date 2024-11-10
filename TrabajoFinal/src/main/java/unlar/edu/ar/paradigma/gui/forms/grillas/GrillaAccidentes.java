@@ -8,8 +8,9 @@ import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 
 public class GrillaAccidentes extends AbstractTableModel {
 
-    private ArrayList<AccidenteDTO> datos = new ArrayList<AccidenteDTO>();
-    private String[] columnas = { "Numero", "fecha", "ubicacion", "legajo", "codigo_motivo", "codigo_tipo_accidente",
+    private ArrayList<AccidenteDTO> datos = new ArrayList<>();
+    private String[] columnas = { "Numero", "Fecha", "Ubicacion", "Legajo del empleado", "Motivo (id)",
+            "Tipo de accidente (ID)",
             "izquierdo o Derecho" };
 
     public GrillaAccidentes() {
@@ -60,10 +61,9 @@ public class GrillaAccidentes extends AbstractTableModel {
 
     }
 
-    @Override // Devuelvo el nombre de la columna
+    @Override
     public String getColumnName(int column) {
-        return columnas[column]; // Generated from
-                                 // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return columnas[column];
     }
 
 }
