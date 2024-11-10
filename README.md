@@ -1,3 +1,4 @@
 # PyL3-TrabajoFinal
 
-![gatito](https://github.com/user-attachments/assets/1342bb3b-22c6-40e5-bfb9-6341e79f5322)
+Diagrama DER 
+![Imagen de WhatsApp 2024-11-09 a las 18 43 27_641d46f0](https://github.com/user-attachments/assets/edcfbd7e-5172-4ba8-bd8a-461722897e95)
