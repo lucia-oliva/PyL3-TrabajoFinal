@@ -37,13 +37,13 @@ public class TrabajoFinal {
                 // probarCrear(accidenteController);
 
                 // Pruebas EmpleadoController
-                // EmpleadoController empleadoController = new EmpleadoController();
-                // empleadoController.setConexion(connection);
-                // probarExtraerEmpleado(empleadoController);
-                // probarExtraerTodoEmpleado(empleadoController);
-                // probarModificarEmpleado(empleadoController);
-                // probarEliminarEmpleado(empleadoController);
-                // probarCrearEmpleado(empleadoController);
+                EmpleadoController empleadoController = new EmpleadoController();
+                empleadoController.setConexion(connection);
+                probarExtraerEmpleado(empleadoController);
+                probarExtraerTodoEmpleado(empleadoController);
+                probarModificarEmpleado(empleadoController);
+                probarEliminarEmpleado(empleadoController);
+                probarCrearEmpleado(empleadoController);
 
                 // Pruebas MotivoController
                 // MotivoController motivoController = new MotivoController();
@@ -74,13 +74,13 @@ public class TrabajoFinal {
                 // probarCrearParteCuerpo(parteCuerpoController);
 
                 // Pruebas ZonaCuerpoController
-                ZonaCuerpoController zonaCuerpoController = new ZonaCuerpoController();
-                zonaCuerpoController.setConexion(connection);
-                probarExtraerZonaCuerpo(zonaCuerpoController);
-                probarExtraerTodoZonaCuerpo(zonaCuerpoController);
-                probarModificarZonaCuerpo(zonaCuerpoController);
-                probarEliminarZonaCuerpo(zonaCuerpoController);
-                probarCrearZonaCuerpo(zonaCuerpoController);
+                // ZonaCuerpoController zonaCuerpoController = new ZonaCuerpoController();
+                // zonaCuerpoController.setConexion(connection);
+                // probarExtraerZonaCuerpo(zonaCuerpoController);
+                // probarExtraerTodoZonaCuerpo(zonaCuerpoController);
+                // probarModificarZonaCuerpo(zonaCuerpoController);
+                // probarEliminarZonaCuerpo(zonaCuerpoController);
+                // probarCrearZonaCuerpo(zonaCuerpoController);
             }
 
         } catch (SQLException e) {
@@ -210,7 +210,7 @@ public class TrabajoFinal {
     }
 
     private static void probarEliminarEmpleado(EmpleadoController empleadoController) {
-        int idEmpleado = 3;
+        int idEmpleado = 2;
         Empleado empleadoAEliminar = empleadoController.extraer(idEmpleado);
         if (empleadoAEliminar != null) {
             if (empleadoController.eliminar(empleadoAEliminar)) {
@@ -224,7 +224,7 @@ public class TrabajoFinal {
     }
 
     private static void probarCrearEmpleado(EmpleadoController empleadoController) {
-        Empleado nuevoEmpleado = new Empleado(4, "Nuevo Empleado");
+        Empleado nuevoEmpleado = new Empleado(5, "Nuevo Empleado");
         if (empleadoController.crear(nuevoEmpleado)) {
             System.out.println("Empleado creado con éxito.");
         } else {

@@ -69,9 +69,26 @@ public class EmpleadoController implements IABMController<Integer, Empleado> {
 
     @Override
     public boolean eliminar(Empleado empleado) {
-        String query = "DELETE FROM Empleado WHERE legajo = ?";
+        String deleteAccidenteZonaCuerpoQuery = "DELETE FROM AccidenteZonaCuerpo WHERE numero_accidente IN (SELECT numero FROM Accidente WHERE legajo = ?)";
+        try (PreparedStatement statement = connection.prepareStatement(deleteAccidenteZonaCuerpoQuery)) {
+            statement.setInt(1, empleado.getLegajo());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar registros dependientes en AccidenteZonaCuerpo: " + e.getMessage());
+            return false;
+        }
 
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        String deleteAccidenteQuery = "DELETE FROM Accidente WHERE legajo = ?";
+        try (PreparedStatement statement = connection.prepareStatement(deleteAccidenteQuery)) {
+            statement.setInt(1, empleado.getLegajo());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar accidentes dependientes: " + e.getMessage());
+            return false;
+        }
+
+        String deleteEmpleadoQuery = "DELETE FROM Empleado WHERE legajo = ?";
+        try (PreparedStatement statement = connection.prepareStatement(deleteEmpleadoQuery)) {
             statement.setInt(1, empleado.getLegajo());
             int rowsAffected = statement.executeUpdate();
             return rowsAffected > 0;
