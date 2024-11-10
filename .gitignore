@@ -85,5 +85,11 @@ replay_pid*
 /codigos/JavaApplication10/nbproject/private/
 /codigos/tp3-hospital/nbproject/private/
 
-# enviroment
+# Environments
 .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
