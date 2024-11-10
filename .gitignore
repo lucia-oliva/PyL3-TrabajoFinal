@@ -86,7 +86,7 @@ replay_pid*
 /codigos/tp3-hospital/nbproject/private/
 
 # Environments
-.env
+*.env
 .venv
 env/
 venv/
