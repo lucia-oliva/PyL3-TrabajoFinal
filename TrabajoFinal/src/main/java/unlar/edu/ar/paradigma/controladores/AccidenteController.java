@@ -21,29 +21,36 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
     @Override
     public List<AccidenteDTO> extraerTodo() {
         List<AccidenteDTO> listaAccidentes = new ArrayList<>();
-        String query = "SELECT a.numero, a.fecha_del_accidente, a.ubicacion, a.legajo, " +
-                "a.codigo_motivo, a.codigo_tipo_accidente, a.izqDer, " +
-                "z.zona_cuerpo, p.parte_cuerpo " +
-                "FROM accidente a " +
-                "INNER JOIN zonacuerpo z ON a.codigo_zona_cuerpo = z.codigo " +
-                "INNER JOIN partecuerpo p ON a.codigo_parte_cuerpo = p.codigo";
+        String query = "SELECT a.numero, a.fecha_del_accidente, " +
+                "a.ubicacion, a.legajo, a.codigo_motivo, " +
+                "a.codigo_tipo_accidente, " +
+                "zc.izqder, pc.codigo " +
+                "FROM Accidente a " +
+                "INNER JOIN accidentezonacuerpo azc ON azc.numero_accidente = a.numero " +
+                "INNER JOIN ZonaCuerpo zc ON zc.id_zona = azc.id_zona " +
+                "INNER JOIN ParteCuerpo pc ON pc.codigo = zc.codigo";
 
         try (PreparedStatement statement = connection.prepareStatement(query);
                 ResultSet rs = statement.executeQuery()) {
-            while (rs.next()) {
-                AccidenteDTO accidente = new AccidenteDTO(
-                        rs.getInt("numero"),
-                        rs.getDate("fecha_del_accidente"),
-                        rs.getString("ubicacion"),
-                        rs.getInt("legajo"),
-                        rs.getInt("codigo_motivo"),
-                        rs.getInt("codigo_tipo_accidente"),
-                        rs.getInt("izqder"),
-                        rs.getInt("codigo"));
-                listaAccidentes.add(accidente);
+            if (rs.next()) {
+                do {
+                    AccidenteDTO accidente = new AccidenteDTO(
+                            rs.getInt("numero"),
+                            rs.getDate("fecha_del_accidente"),
+                            rs.getString("ubicacion"),
+                            rs.getInt("legajo"),
+                            rs.getInt("codigo_motivo"),
+                            rs.getInt("codigo_tipo_accidente"),
+                            rs.getInt("izqder"),
+                            rs.getInt("codigo"));
+                    listaAccidentes.add(accidente);
+                } while (rs.next());
             }
         } catch (SQLException e) {
+            // Maneja la excepción aquí, por ejemplo:
             System.err.println("Error al extraer todos los accidentes: " + e.getMessage());
+            // O devuelve una lista vacía
+            return new ArrayList<>();
         }
         return listaAccidentes;
     }

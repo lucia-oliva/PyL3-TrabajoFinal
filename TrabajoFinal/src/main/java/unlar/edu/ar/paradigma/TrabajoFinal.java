@@ -2,6 +2,7 @@ package unlar.edu.ar.paradigma;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import unlar.edu.ar.paradigma.controladores.AccidenteController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
@@ -30,6 +31,17 @@ public class TrabajoFinal {
                     System.out.println(accidente);
                 } else {
                     System.out.println("No se encontró un accidente con el ID " + idAccidente);
+                }
+
+                // Probar extraerTodo()
+                List<AccidenteDTO> listaAccidentes = accidenteController.extraerTodo();
+                if (!listaAccidentes.isEmpty()) {
+                    System.out.println("\nLista de accidentes:");
+                    for (AccidenteDTO accident : listaAccidentes) {
+                        System.out.println(accident);
+                    }
+                } else {
+                    System.out.println("No se encontraron accidentes.");
                 }
             }
 
