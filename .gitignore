@@ -93,4 +93,4 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-/TrabajoFinal/.env
+TrabajoFinal/.env
