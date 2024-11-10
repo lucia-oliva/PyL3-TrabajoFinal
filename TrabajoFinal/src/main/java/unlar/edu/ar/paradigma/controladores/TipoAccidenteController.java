@@ -73,7 +73,6 @@ public class TipoAccidenteController implements IABMController<Integer, TipoAcci
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, tipoAccidente.getCodigo());
-            statement.setString(2, tipoAccidente.getTipo());
             int rowsAffected = statement.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {

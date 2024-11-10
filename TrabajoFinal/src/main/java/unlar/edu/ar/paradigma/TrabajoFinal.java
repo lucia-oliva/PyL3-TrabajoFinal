@@ -28,10 +28,10 @@ public class TrabajoFinal {
                 probarConexion();
 
                 // Pruebas AccidenteController
-                // AccidenteController accidenteController = new AccidenteController();
-                // accidenteController.setConexion(connection);
+                AccidenteController accidenteController = new AccidenteController();
+                accidenteController.setConexion(connection);
                 // probarExtraer(accidenteController);
-                // probarExtraerTodo(accidenteController);
+                probarExtraerTodo(accidenteController);
                 // probarModificar(accidenteController);
                 // probarEliminar(accidenteController);
                 // probarCrear(accidenteController);
@@ -39,45 +39,44 @@ public class TrabajoFinal {
                 // Pruebas EmpleadoController
                 EmpleadoController empleadoController = new EmpleadoController();
                 empleadoController.setConexion(connection);
-                probarExtraerEmpleado(empleadoController);
+                // probarExtraerEmpleado(empleadoController);
                 probarExtraerTodoEmpleado(empleadoController);
-                probarModificarEmpleado(empleadoController);
-                probarEliminarEmpleado(empleadoController);
-                probarCrearEmpleado(empleadoController);
+                // probarModificarEmpleado(empleadoController);
+                // probarEliminarEmpleado(empleadoController);
+                // probarCrearEmpleado(empleadoController);
 
                 // Pruebas MotivoController
-                // MotivoController motivoController = new MotivoController();
-                // motivoController.setConexion(connection);
+                MotivoController motivoController = new MotivoController();
+                motivoController.setConexion(connection);
                 // probarExtraerMotivo(motivoController);
-                // probarExtraerTodoMotivo(motivoController);
+                probarExtraerTodoMotivo(motivoController);
                 // probarModificarMotivo(motivoController);
                 // probarEliminarMotivo(motivoController);
                 // probarCrearMotivo(motivoController);
 
                 // Pruebas TipoAccidenteController
-                // TipoAccidenteController tipoAccidenteController = new
-                // TipoAccidenteController();
-                // tipoAccidenteController.setConexion(connection);
+                TipoAccidenteController tipoAccidenteController = new TipoAccidenteController();
+                tipoAccidenteController.setConexion(connection);
                 // probarExtraerTipoAccidente(tipoAccidenteController);
-                // probarExtraerTodoTipoAccidente(tipoAccidenteController);
+                probarExtraerTodoTipoAccidente(tipoAccidenteController);
                 // probarModificarTipoAccidente(tipoAccidenteController);
                 // probarEliminarTipoAccidente(tipoAccidenteController);
                 // probarCrearTipoAccidente(tipoAccidenteController);
 
                 // Pruebas ParteCuerpoController
-                // ParteCuerpoController parteCuerpoController = new ParteCuerpoController();
-                // parteCuerpoController.setConexion(connection);
+                ParteCuerpoController parteCuerpoController = new ParteCuerpoController();
+                parteCuerpoController.setConexion(connection);
                 // probarExtraerParteCuerpo(parteCuerpoController);
-                // probarExtraerTodoParteCuerpo(parteCuerpoController);
+                probarExtraerTodoParteCuerpo(parteCuerpoController);
                 // probarModificarParteCuerpo(parteCuerpoController);
                 // probarEliminarParteCuerpo(parteCuerpoController);
                 // probarCrearParteCuerpo(parteCuerpoController);
 
                 // Pruebas ZonaCuerpoController
-                // ZonaCuerpoController zonaCuerpoController = new ZonaCuerpoController();
-                // zonaCuerpoController.setConexion(connection);
+                ZonaCuerpoController zonaCuerpoController = new ZonaCuerpoController();
+                zonaCuerpoController.setConexion(connection);
                 // probarExtraerZonaCuerpo(zonaCuerpoController);
-                // probarExtraerTodoZonaCuerpo(zonaCuerpoController);
+                probarExtraerTodoZonaCuerpo(zonaCuerpoController);
                 // probarModificarZonaCuerpo(zonaCuerpoController);
                 // probarEliminarZonaCuerpo(zonaCuerpoController);
                 // probarCrearZonaCuerpo(zonaCuerpoController);
@@ -91,7 +90,7 @@ public class TrabajoFinal {
     }
 
     private static void probarConexion() {
-        System.out.println("Conexión exitosa a la base de datos.");
+        System.out.println("Conexion exitosa a la base de datos.");
     }
 
     // Pruebas para Accidente
@@ -130,7 +129,7 @@ public class TrabajoFinal {
             accidenteAModificar.setCodigo(3);
 
             if (accidenteController.modificar(accidenteAModificar)) {
-                System.out.println("Accidente modificado con éxito.");
+                System.out.println("Accidente modificado con exito.");
             } else {
                 System.out.println("Error al modificar accidente.");
             }
@@ -144,7 +143,7 @@ public class TrabajoFinal {
         AccidenteDTO accidenteAEliminar = accidenteController.extraer(idAccidente);
         if (accidenteAEliminar != null) {
             if (accidenteController.eliminar(accidenteAEliminar)) {
-                System.out.println("Accidente eliminado con éxito.");
+                System.out.println("Accidente eliminado con exito.");
             } else {
                 System.out.println("Error al eliminar accidente.");
             }
@@ -165,7 +164,7 @@ public class TrabajoFinal {
                 1);
 
         if (accidenteController.crear(nuevoAccidente)) {
-            System.out.println("Accidente creado con éxito.");
+            System.out.println("Accidente creado con exito.");
         } else {
             System.out.println("Error al crear accidente.");
         }
@@ -200,7 +199,7 @@ public class TrabajoFinal {
         if (empleadoAModificar != null) {
             empleadoAModificar.setApellido_nombre("Nuevo Nombre");
             if (empleadoController.modificar(empleadoAModificar)) {
-                System.out.println("Empleado modificado con éxito.");
+                System.out.println("Empleado modificado con exito.");
             } else {
                 System.out.println("Error al modificar empleado.");
             }
@@ -214,7 +213,7 @@ public class TrabajoFinal {
         Empleado empleadoAEliminar = empleadoController.extraer(idEmpleado);
         if (empleadoAEliminar != null) {
             if (empleadoController.eliminar(empleadoAEliminar)) {
-                System.out.println("Empleado eliminado con éxito.");
+                System.out.println("Empleado eliminado con exito.");
             } else {
                 System.out.println("Error al eliminar empleado.");
             }
@@ -226,7 +225,7 @@ public class TrabajoFinal {
     private static void probarCrearEmpleado(EmpleadoController empleadoController) {
         Empleado nuevoEmpleado = new Empleado(5, "Nuevo Empleado");
         if (empleadoController.crear(nuevoEmpleado)) {
-            System.out.println("Empleado creado con éxito.");
+            System.out.println("Empleado creado con exito.");
         } else {
             System.out.println("Error al crear empleado.");
         }
@@ -261,7 +260,7 @@ public class TrabajoFinal {
         if (motivoAModificar != null) {
             motivoAModificar.setMotivo("Nuevo Motivo");
             if (motivoController.modificar(motivoAModificar)) {
-                System.out.println("Motivo modificado con éxito.");
+                System.out.println("Motivo modificado con exito.");
             } else {
                 System.out.println("Error al modificar motivo.");
             }
@@ -271,11 +270,11 @@ public class TrabajoFinal {
     }
 
     private static void probarEliminarMotivo(MotivoController motivoController) {
-        int idMotivo = 3;
+        int idMotivo = 4;
         Motivo motivoAEliminar = motivoController.extraer(idMotivo);
         if (motivoAEliminar != null) {
             if (motivoController.eliminar(motivoAEliminar)) {
-                System.out.println("Motivo eliminado con éxito.");
+                System.out.println("Motivo eliminado con exito.");
             } else {
                 System.out.println("Error al eliminar motivo.");
             }
@@ -285,9 +284,9 @@ public class TrabajoFinal {
     }
 
     private static void probarCrearMotivo(MotivoController motivoController) {
-        Motivo nuevoMotivo = new Motivo(4, "Nuevo Motivo");
+        Motivo nuevoMotivo = new Motivo(5, "Nuevo Motivo");
         if (motivoController.crear(nuevoMotivo)) {
-            System.out.println("Motivo creado con éxito.");
+            System.out.println("Motivo creado con exito.");
         } else {
             System.out.println("Error al crear motivo.");
         }
@@ -322,7 +321,7 @@ public class TrabajoFinal {
         if (tipoAccidenteAModificar != null) {
             tipoAccidenteAModificar.setTipo("Nuevo Tipo de Accidente");
             if (tipoAccidenteController.modificar(tipoAccidenteAModificar)) {
-                System.out.println("Tipo de accidente modificado con éxito.");
+                System.out.println("Tipo de accidente modificado con exito.");
             } else {
                 System.out.println("Error al modificar tipo de accidente.");
             }
@@ -332,11 +331,11 @@ public class TrabajoFinal {
     }
 
     private static void probarEliminarTipoAccidente(TipoAccidenteController tipoAccidenteController) {
-        int idTipoAccidente = 3;
+        int idTipoAccidente = 5;
         TipoAccidente tipoAccidenteAEliminar = tipoAccidenteController.extraer(idTipoAccidente);
         if (tipoAccidenteAEliminar != null) {
             if (tipoAccidenteController.eliminar(tipoAccidenteAEliminar)) {
-                System.out.println("Tipo de accidente eliminado con éxito.");
+                System.out.println("Tipo de accidente eliminado con exito.");
             } else {
                 System.out.println("Error al eliminar tipo de accidente.");
             }
@@ -346,9 +345,9 @@ public class TrabajoFinal {
     }
 
     private static void probarCrearTipoAccidente(TipoAccidenteController tipoAccidenteController) {
-        TipoAccidente nuevoTipoAccidente = new TipoAccidente(4, "Nuevo Tipo de Accidente");
+        TipoAccidente nuevoTipoAccidente = new TipoAccidente(5, "Por programar");
         if (tipoAccidenteController.crear(nuevoTipoAccidente)) {
-            System.out.println("Tipo de accidente creado con éxito.");
+            System.out.println("Tipo de accidente creado con exito.");
         } else {
             System.out.println("Error al crear tipo de accidente.");
         }
@@ -383,7 +382,7 @@ public class TrabajoFinal {
         if (parteCuerpoAModificar != null) {
             parteCuerpoAModificar.setParte("Nueva Parte del Cuerpo");
             if (parteCuerpoController.modificar(parteCuerpoAModificar)) {
-                System.out.println("Parte del cuerpo modificada con éxito.");
+                System.out.println("Parte del cuerpo modificada con exito.");
             } else {
                 System.out.println("Error al modificar parte del cuerpo.");
             }
@@ -397,7 +396,7 @@ public class TrabajoFinal {
         ParteCuerpo parteCuerpoAEliminar = parteCuerpoController.extraer(idParteCuerpo);
         if (parteCuerpoAEliminar != null) {
             if (parteCuerpoController.eliminar(parteCuerpoAEliminar)) {
-                System.out.println("Parte de cuerpo eliminada con éxito.");
+                System.out.println("Parte de cuerpo eliminada con exito.");
             } else {
                 System.out.println("Error al eliminar parte de cuerpo.");
             }
@@ -407,9 +406,9 @@ public class TrabajoFinal {
     }
 
     private static void probarCrearParteCuerpo(ParteCuerpoController parteCuerpoController) {
-        ParteCuerpo nuevaParteCuerpo = new ParteCuerpo(4, "Nueva Parte del Cuerpo");
+        ParteCuerpo nuevaParteCuerpo = new ParteCuerpo(7, "Nueva Parte del Cuerpo");
         if (parteCuerpoController.crear(nuevaParteCuerpo)) {
-            System.out.println("Parte de cuerpo creada con éxito.");
+            System.out.println("Parte de cuerpo creada con exito.");
         } else {
             System.out.println("Error al crear parte de cuerpo.");
         }
@@ -444,7 +443,7 @@ public class TrabajoFinal {
         if (zonaCuerpoAModificar != null) {
             zonaCuerpoAModificar.setIzqder(1);
             if (zonaCuerpoController.modificar(zonaCuerpoAModificar)) {
-                System.out.println("Zona de cuerpo modificada con éxito.");
+                System.out.println("Zona de cuerpo modificada con exito.");
             } else {
                 System.out.println("Error al modificar zona de cuerpo.");
             }
@@ -458,7 +457,7 @@ public class TrabajoFinal {
         ZonaCuerpo zonaCuerpoAEliminar = zonaCuerpoController.extraer(idZonaCuerpo);
         if (zonaCuerpoAEliminar != null) {
             if (zonaCuerpoController.eliminar(zonaCuerpoAEliminar)) {
-                System.out.println("Zona de cuerpo eliminada con éxito.");
+                System.out.println("Zona de cuerpo eliminada con exito.");
             } else {
                 System.out.println("Error al eliminar zona de cuerpo.");
             }
@@ -470,7 +469,7 @@ public class TrabajoFinal {
     private static void probarCrearZonaCuerpo(ZonaCuerpoController zonaCuerpoController) {
         ZonaCuerpo nuevaZonaCuerpo = new ZonaCuerpo(3, 4, 4);
         if (zonaCuerpoController.crear(nuevaZonaCuerpo)) {
-            System.out.println("Zona de cuerpo creada con éxito.");
+            System.out.println("Zona de cuerpo creada con exito.");
         } else {
             System.out.println("Error al crear zona de cuerpo.");
         }
