@@ -3,8 +3,10 @@ package unlar.edu.ar.paradigma;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import unlar.edu.ar.paradigma.controladores.AccidenteController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.Principal;
+import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 
 public class TrabajoFinal {
 
@@ -14,16 +16,27 @@ public class TrabajoFinal {
         principal.setVisible(true);
 
         try {
-            // Obtener la conexión usando la clase SetConexion
             Connection connection = SetConexion.getConnection();
 
-            // Si la conexión es exitosa, muestra un mensaje
+            AccidenteController accidenteController = new AccidenteController();
+            accidenteController.setConexion(connection);
+
             if (connection != null) {
                 System.out.println("Conexión exitosa a la base de datos.");
+                int idAccidente = 1;
+                AccidenteDTO accidente = accidenteController.extraer(idAccidente);
+                if (accidente != null) {
+                    System.out.println("\nAccidente con ID " + idAccidente + ":");
+                    System.out.println(accidente);
+                } else {
+                    System.out.println("No se encontró un accidente con el ID " + idAccidente);
+                }
             }
+
         } catch (SQLException e) {
-            // Si ocurre un error, muestra el mensaje de error
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error en la creación del accidente: " + e.getMessage());
         }
     }
 }

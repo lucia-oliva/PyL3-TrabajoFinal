@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import unlar.edu.ar.paradigma.objetos.Accidente;
+import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 
 public class GrillaAccidentes extends AbstractTableModel {
 
-    private ArrayList<Accidente> datos = new ArrayList<Accidente>();
+    private ArrayList<AccidenteDTO> datos = new ArrayList<AccidenteDTO>();
     private String[] columnas = { "Numero", "fecha", "ubicacion", "legajo", "codigo_motivo", "codigo_tipo_accidente",
             "izquierdo o Derecho" };
 
     public GrillaAccidentes() {
     }
 
-    public GrillaAccidentes(ArrayList<Accidente> datos) {
+    public GrillaAccidentes(ArrayList<AccidenteDTO> datos) {
         setDatos(datos);
     }
 
-    public void setDatos(ArrayList<Accidente> datos) {
+    public void setDatos(ArrayList<AccidenteDTO> datos) {
         this.datos = datos;
     }
 
@@ -35,7 +35,7 @@ public class GrillaAccidentes extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Accidente accidente = datos.get(rowIndex);
+        AccidenteDTO accidente = datos.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
@@ -51,7 +51,9 @@ public class GrillaAccidentes extends AbstractTableModel {
             case 5:
                 return accidente.getCodigo_tipo_accidente();
             case 6:
-                return accidente.getIzqDer();
+                return accidente.getIzqder();
+            case 7:
+                return accidente.getCodigo();
             default:
                 return "";
         }
