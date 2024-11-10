@@ -7,7 +7,7 @@ import unlar.edu.ar.paradigma.objetos.Empleado;
 public class GrillaEmpleado extends AbstractTableModel {
 
     private ArrayList<Empleado> datos = new ArrayList<>();
-    private String[] columnas = { "Codigo", "Apellido y Nombre" };
+    private String[] columnas = { "Legajo", "Apellido y Nombre" };
 
     public GrillaEmpleado() {
     }
@@ -35,7 +35,7 @@ public class GrillaEmpleado extends AbstractTableModel {
         Empleado empleado = datos.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return empleado.getCodigo();
+                return empleado.getLegajo();
             case 1:
                 return empleado.getApellido_nombre();
             default:

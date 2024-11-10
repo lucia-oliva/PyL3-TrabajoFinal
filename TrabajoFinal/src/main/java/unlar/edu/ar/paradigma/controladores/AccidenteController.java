@@ -54,7 +54,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
     }
 
     @Override
-    public AccidenteDTO extraer(Integer id) {
+    public AccidenteDTO extraer(Integer ID) {
         String query = "SELECT a.numero, a.fecha_del_accidente, " +
                 "a.ubicacion, a.legajo, a.codigo_motivo, " +
                 "a.codigo_tipo_accidente, " +
@@ -66,7 +66,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
                 "WHERE a.numero = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, id);
+            statement.setInt(1, ID);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 return new AccidenteDTO(
@@ -80,7 +80,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
                         rs.getInt("codigo"));
             }
         } catch (SQLException e) {
-            System.err.println("Error al extraer accidente con ID " + id + ": " + e.getMessage());
+            System.err.println("Error al extraer accidente con ID " + ID + ": " + e.getMessage());
         }
         return null;
     }

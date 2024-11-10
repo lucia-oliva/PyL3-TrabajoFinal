@@ -2,20 +2,20 @@ package unlar.edu.ar.paradigma.objetos;
 
 public class Empleado {
 
-    private Integer codigo;
+    private Integer legajo;
     private String apellido_nombre;
 
-    public Empleado(Integer codigo, String apellido_nombre) {
-        this.codigo = codigo;
+    public Empleado(Integer legajo, String apellido_nombre) {
+        this.legajo = legajo;
         this.apellido_nombre = apellido_nombre;
     }
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getLegajo() {
+        return legajo;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setLegajo(Integer legajo) {
+        this.legajo = legajo;
     }
 
     public String getApellido_nombre() {
@@ -28,7 +28,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado [codigo=" + codigo + ", apellido_nombre=" + apellido_nombre + "]";
+        return "Empleado [legajo=" + legajo + ", apellido_nombre=" + apellido_nombre + "]";
     }
 
 }

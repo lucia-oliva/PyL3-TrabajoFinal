@@ -32,6 +32,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grillaTipoAccidente1 = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -95,6 +96,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente grillaTipoAccidente1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

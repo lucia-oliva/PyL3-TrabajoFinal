@@ -52,7 +52,7 @@ public class GrillaAccidentes extends AbstractTableModel {
             case 5:
                 return accidente.getCodigo_tipo_accidente();
             case 6:
-                return accidente.getIzqder();
+                return accidente.getId_zona();
             case 7:
                 return accidente.getCodigo();
             default:

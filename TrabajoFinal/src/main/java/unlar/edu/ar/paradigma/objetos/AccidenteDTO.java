@@ -10,18 +10,18 @@ public class AccidenteDTO {
     private Integer legajo;
     private Integer codigo_motivo;
     private Integer codigo_tipo_accidente;
-    private Integer izqder;
+    private Integer id_zona;
     private Integer codigo;
 
     public AccidenteDTO(Integer numero, Date fecha_del_accidente, String ubicacion, Integer legajo,
-            Integer codigo_motivo, Integer codigo_tipo_accidente, Integer izqder, Integer codigo) {
+            Integer codigo_motivo, Integer codigo_tipo_accidente, Integer id_zona, Integer codigo) {
         this.numero = numero;
         this.fecha_del_accidente = fecha_del_accidente;
         this.ubicacion = ubicacion;
         this.legajo = legajo;
         this.codigo_motivo = codigo_motivo;
         this.codigo_tipo_accidente = codigo_tipo_accidente;
-        this.izqder = izqder;
+        this.id_zona = id_zona;
         this.codigo = codigo;
     }
 
@@ -73,12 +73,12 @@ public class AccidenteDTO {
         this.codigo_tipo_accidente = codigo_tipo_accidente;
     }
 
-    public Integer getIzqder() {
-        return izqder;
+    public Integer getId_zona() {
+        return id_zona;
     }
 
-    public void setIzqder(Integer izqder) {
-        this.izqder = izqder;
+    public void setId_zona(Integer id_zona) {
+        this.id_zona = id_zona;
     }
 
     public Integer getCodigo() {
@@ -93,7 +93,7 @@ public class AccidenteDTO {
     public String toString() {
         return "AccidenteDTO [numero=" + numero + ", fecha_del_accidente=" + fecha_del_accidente + ", ubicacion="
                 + ubicacion + ", legajo=" + legajo + ", codigo_motivo=" + codigo_motivo + ", codigo_tipo_accidente="
-                + codigo_tipo_accidente + ", izqder=" + izqder + ", codigo=" + codigo + "]";
+                + codigo_tipo_accidente + ", id_zona=" + id_zona + ", codigo=" + codigo + "]";
     }
 
 }
