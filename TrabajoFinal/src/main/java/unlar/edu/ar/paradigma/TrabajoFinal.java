@@ -27,6 +27,7 @@ public class TrabajoFinal {
                 probarExtraerTodo(accidenteController);
                 // probarModificar(accidenteController);
                 probarEliminar(accidenteController);
+                probarCrear(accidenteController);
             }
 
         } catch (SQLException e) {
@@ -71,7 +72,7 @@ public class TrabajoFinal {
             accidenteAModificar.setLegajo(1);
             accidenteAModificar.setCodigo_motivo(2);
             accidenteAModificar.setCodigo_tipo_accidente(2);
-            accidenteAModificar.setIzqder(1);
+            accidenteAModificar.setId_zona(1);
             accidenteAModificar.setCodigo(3);
 
             if (accidenteController.modificar(accidenteAModificar)) {
@@ -99,6 +100,24 @@ public class TrabajoFinal {
             }
         } else {
             System.out.println("No se encontró el accidente con ID " + idAccidente + " para eliminar.");
+        }
+    }
+
+    private static void probarCrear(AccidenteController accidenteController) {
+        AccidenteDTO nuevoAccidente = new AccidenteDTO(
+                4,
+                new java.sql.Date(System.currentTimeMillis()),
+                "Nueva ubicación",
+                1,
+                1,
+                1,
+                1,
+                1);
+
+        if (accidenteController.crear(nuevoAccidente)) {
+            System.out.println("Accidente creado con éxito.");
+        } else {
+            System.out.println("Error al crear accidente.");
         }
     }
 
