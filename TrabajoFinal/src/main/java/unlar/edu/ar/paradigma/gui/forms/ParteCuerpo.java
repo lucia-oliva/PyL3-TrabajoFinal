@@ -122,16 +122,30 @@ public class ParteCuerpo extends javax.swing.JPanel {
          jButton1.setText("Agregar");
            jButton1.addActionListener(e -> {
            // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> columnasEmpleado = List.of("Codigo", "Tipo");
+           List<String> ParteCuerpo = List.of("Codigo", "Tipo");
             
 // Crear y mostrar el formulario de agregar
             GenericFormAgregar formulario = new GenericFormAgregar(
                 (Frame) SwingUtilities.getWindowAncestor(this), 
                 true, 
-                columnasEmpleado
+                ParteCuerpo
             );
             formulario.setVisible(true);
           });
+           
+             jButton1.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> ParteCuerpo = List.of("Codigo", "Tipo");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormAgregar formulario = new GenericFormAgregar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                ParteCuerpo
+            );
+            formulario.setVisible(true);
+          });
+
 
         jButton2.setText("Modificar");
 

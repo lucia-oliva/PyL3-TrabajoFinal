@@ -122,13 +122,26 @@ public class FormularioMotivo extends javax.swing.JPanel {
          jButton1.setText("Agregar");
            jButton1.addActionListener(e -> {
            // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> columnasEmpleado = List.of("ID-Codigo", "Motivo");
+           List<String> motivo = List.of("ID-Codigo", "Motivo");
             
 // Crear y mostrar el formulario de agregar
             GenericFormAgregar formulario = new GenericFormAgregar(
                 (Frame) SwingUtilities.getWindowAncestor(this), 
                 true, 
-                columnasEmpleado
+                motivo
+            );
+            formulario.setVisible(true);
+          });
+           
+             jButton2.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> motivo = List.of("ID-Codigo", "Motivo");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormModificar formulario = new GenericFormModificar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                motivo
             );
             formulario.setVisible(true);
           });
