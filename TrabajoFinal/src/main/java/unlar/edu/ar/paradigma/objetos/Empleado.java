@@ -10,6 +10,11 @@ public class Empleado {
         this.apellido_nombre = apellido_nombre;
     }
 
+    public Empleado() {
+    }
+    
+    
+
     public Integer getLegajo() {
         return legajo;
     }

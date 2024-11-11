@@ -12,6 +12,8 @@ public class SetConexion {
     private static final String URL;
     private static final String USER;
     private static final String PASSWORD;
+    private static final String DB;
+    
 
     static {
 
@@ -22,9 +24,13 @@ public class SetConexion {
         String POSTGRES_PORT = dotenv.get("POSTGRES_PORT");
         String POSTGRES_DB = dotenv.get("POSTGRES_DB");
 
+        //URL = "jdbc:postgresql://" + POSTGRES_HOST + ":" + POSTGRES_PORT + "/" + POSTGRES_DB + "/" + POSTGRES_PASSWORD;
         URL = "jdbc:postgresql://" + POSTGRES_HOST + ":" + POSTGRES_PORT + "/" + POSTGRES_DB;
+        //URL = "jdbc:postgresql://"+"localhost:"+POSTGRES_HOST+"/"+POSTGRES_DB;
         USER = POSTGRES_USER;
         PASSWORD = POSTGRES_PASSWORD;
+        DB = POSTGRES_DB;
+        
     }
 
     public static Connection getConnection() throws SQLException {
