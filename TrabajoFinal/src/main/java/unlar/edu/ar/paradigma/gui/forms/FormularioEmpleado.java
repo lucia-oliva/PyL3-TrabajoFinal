@@ -35,7 +35,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grillaEmpleado1 = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado();
+        grillaEmpleado = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -43,7 +43,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jTable1.setModel(grillaEmpleado1);
+        jTable1.setModel(grillaEmpleado);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
@@ -89,7 +89,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado grillaEmpleado1;
+    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado grillaEmpleado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

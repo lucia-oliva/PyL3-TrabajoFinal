@@ -33,7 +33,7 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
     private void initComponents() {
 
         button1 = new java.awt.Button();
-        grillaZonaCuerpo1 = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaZonaCuerpo();
+        grillaZonaCuerpo = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaZonaCuerpo();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -43,7 +43,7 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
 
         button1.setLabel("button1");
 
-        jTable1.setModel(grillaZonaCuerpo1);
+        jTable1.setModel(grillaZonaCuerpo);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
@@ -90,7 +90,7 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
-    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaZonaCuerpo grillaZonaCuerpo1;
+    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaZonaCuerpo grillaZonaCuerpo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

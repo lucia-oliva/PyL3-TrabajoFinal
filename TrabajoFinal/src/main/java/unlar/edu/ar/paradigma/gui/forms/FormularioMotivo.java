@@ -32,7 +32,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grillaMotivo1 = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo();
+        grillaMotivo = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -40,7 +40,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jTable1.setModel(grillaMotivo1);
+        jTable1.setModel(grillaMotivo);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
@@ -86,7 +86,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo grillaMotivo1;
+    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo grillaMotivo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
