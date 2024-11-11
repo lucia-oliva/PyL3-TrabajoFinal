@@ -11,6 +11,7 @@ import unlar.edu.ar.paradigma.controladores.TipoAccidenteController;
 import unlar.edu.ar.paradigma.controladores.ParteCuerpoController;
 import unlar.edu.ar.paradigma.controladores.ZonaCuerpoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.Principal;
 import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 import unlar.edu.ar.paradigma.objetos.Empleado;
 import unlar.edu.ar.paradigma.objetos.Motivo;
@@ -21,6 +22,9 @@ import unlar.edu.ar.paradigma.objetos.ZonaCuerpo;
 public class TrabajoFinal {
 
     public static void main(String[] args) throws SQLException {
+
+        Principal principal = new Principal();
+        principal.setVisible(true);
 
         try {
             Connection connection = SetConexion.getConnection();
