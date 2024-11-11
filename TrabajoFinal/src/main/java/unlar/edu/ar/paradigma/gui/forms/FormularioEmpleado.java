@@ -6,9 +6,18 @@ package unlar.edu.ar.paradigma.gui.forms;
 
 
 import java.awt.Frame;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import unlar.edu.ar.paradigma.controladores.EmpleadoController;
+import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado;
+import unlar.edu.ar.paradigma.objetos.Empleado;
 
 
 
@@ -17,14 +26,24 @@ import javax.swing.table.DefaultTableModel;
  * @author lucia
  */
 public class FormularioEmpleado extends javax.swing.JPanel {
-
+    
+    private EmpleadoController empleadoController;
     /**
      * Creates new form FormularioEmpleado
      */
     public FormularioEmpleado() {
         initComponents();
         initCustomComponents();
+        empleadoController = new EmpleadoController();
+        try{
+            Connection connection = SetConexion.getConnection();
+            empleadoController.setConexion(connection);
+        } catch(SQLException e){
+        }
+        actualizarTabla();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +112,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            RegistrarEmpleado registrarEmpleadoForm = new RegistrarEmpleado();
+            RegistrarEmpleado registrarEmpleadoForm = new RegistrarEmpleado(this);
             registrarEmpleadoForm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -110,20 +129,20 @@ public class FormularioEmpleado extends javax.swing.JPanel {
 
     private void initCustomComponents() {
         
-         DefaultTableModel model = new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID-Legajo", "Apellido-Nombre"
-            }
-        );
-        jTable1.setModel(model);
-        jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
+        // DefaultTableModel model = new DefaultTableModel(
+          //  new Object [][] {
+            //    {null, null, null, null},
+              //  {null, null, null, null},
+               // {null, null, null, null},
+               // {null, null, null, null}
+           // },
+           // new String [] {
+             //   "ID-Legajo", "Apellido-Nombre"
+            //}
+       // );
+       // jTable1.setModel(model);
+       // jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
+        //ScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
 
          jButton1.setText("Agregar");
          
@@ -166,4 +185,27 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         revalidate();
         repaint();
     }
+    
+    private void cargarEmpleados(List<Empleado> empleados){
+        GrillaEmpleado model = new GrillaEmpleado();
+        jTable1.setModel(model);
+        model.setRowCount(0);
+        model.setDatos(new ArrayList<>(empleados));
+        
+        //for(Empleado empleado : empleados){
+          //  model.addRow(new Object[]{empleado.getLegajo(), empleado.getApellido_nombre()});
+       // }
+    }
+    
+    public void actualizarTabla(){
+            List<Empleado> empleados = empleadoController.extraerTodo();
+            //MOstrar en tabla
+           if(empleados !=null && !empleados.isEmpty()){
+              cargarEmpleados(empleados);
+           }else{
+                System.out.println("No hay empleados");
+           }
+         
+    }
+    
 }

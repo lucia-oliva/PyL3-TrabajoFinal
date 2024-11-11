@@ -20,11 +20,14 @@ import unlar.edu.ar.paradigma.objetos.Empleado;
 public class RegistrarEmpleado extends javax.swing.JFrame {
      
     private EmpleadoController empleadoController;
+    private FormularioEmpleado formularioEmpleado;
     /** private Connection connection;
      * Creates new form RegistrarEmpleado
      */
-    public RegistrarEmpleado() {
+    public RegistrarEmpleado(FormularioEmpleado formularioEmpleado) {
+       this.formularioEmpleado = formularioEmpleado;
         initComponents();
+       
         empleadoController = new EmpleadoController();
         try {
             Connection connection = SetConexion.getConnection();
@@ -33,6 +36,8 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
             System.err.println("Error al establecer la conexión: " + e.getMessage());
         }
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,7 +132,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -138,10 +143,12 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         
         if (empleadoController.crear(empleado)) {
             System.out.println("Empleado creado exitosamente.");
+            formularioEmpleado.actualizarTabla();
         } else {
             System.out.println("Hubo un error al crear el empleado.");
         }
         
+        dispose();
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -176,7 +183,8 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarEmpleado().setVisible(true);
+                FormularioEmpleado formularioEmpleado = new FormularioEmpleado();
+                new RegistrarEmpleado(formularioEmpleado).setVisible(true);
             }
         });
     }
