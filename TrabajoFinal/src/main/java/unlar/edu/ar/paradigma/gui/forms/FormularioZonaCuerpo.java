@@ -108,7 +108,7 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "IzqDer", "Codigo"
+                "ID", "Codigo parte cuerpo", "Izquierdo o derecho"
             }
         );
         jTable1.setModel(model);

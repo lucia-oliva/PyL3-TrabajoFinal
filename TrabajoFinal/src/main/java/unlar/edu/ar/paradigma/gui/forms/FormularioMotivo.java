@@ -104,7 +104,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID-Codigo", "Motivo"
+                "Codigo", "Motivo"
             }
         );
         jTable1.setModel(model);

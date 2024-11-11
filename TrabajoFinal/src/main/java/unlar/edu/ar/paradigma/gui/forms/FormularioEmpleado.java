@@ -108,7 +108,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID-Legajo", "Apellido-Nombre"
+                "Legajo", "Apellido y Nombre"
             }
         );
         jTable1.setModel(model);

@@ -104,7 +104,7 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Tipo"
+                "Codigo", "Parte"
             }
         );
         jTable1.setModel(model);
