@@ -33,6 +33,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
     private void initComponents() {
 
         grillaTipoAccidente1 = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente();
+        grillaTipoAccidente2 = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -40,17 +41,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(grillaTipoAccidente1);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
@@ -97,6 +88,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente grillaTipoAccidente1;
+    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente grillaTipoAccidente2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

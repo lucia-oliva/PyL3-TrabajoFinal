@@ -10,7 +10,7 @@ import unlar.edu.ar.paradigma.gui.forms.FormularioMotivo;
 import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
 import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
 import unlar.edu.ar.paradigma.gui.forms.GenericFormAgregar;
-import unlar.edu.ar.paradigma.gui.forms.ParteCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.FormularioParteCuerpo;
 
 
 public class Principal extends javax.swing.JFrame {
@@ -284,7 +284,7 @@ public class Principal extends javax.swing.JFrame {
            formParteCuerpo.setSize(600, 400);
            formParteCuerpo.setLocationRelativeTo(this); // Centra sobre la ventana principal
            formParteCuerpo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Solo cierra esta ventana
-           ParteCuerpo formularioParteCuerpo = new ParteCuerpo();
+           FormularioParteCuerpo formularioParteCuerpo = new FormularioParteCuerpo();
            formParteCuerpo.add(formularioParteCuerpo);
            formParteCuerpo.setVisible(true);  // Muestra la ventana
 
