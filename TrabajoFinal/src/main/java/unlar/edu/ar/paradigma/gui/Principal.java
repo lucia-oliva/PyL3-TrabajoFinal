@@ -153,9 +153,6 @@ public class Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        Principal principal = new Principal();
-        principal.setVisible(true);
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
