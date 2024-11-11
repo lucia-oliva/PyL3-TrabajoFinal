@@ -13,12 +13,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author lucia
  */
-public class ParteCuerpo extends javax.swing.JPanel {
+public class FormularioParteCuerpo extends javax.swing.JPanel {
 
     /**
      * Creates new form ParteCuerpo
      */
-    public ParteCuerpo() {
+    public FormularioParteCuerpo() {
         initComponents();
         initCustomComponents();
     }
