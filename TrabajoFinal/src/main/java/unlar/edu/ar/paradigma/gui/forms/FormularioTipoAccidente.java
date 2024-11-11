@@ -122,15 +122,28 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
 
          jButton1.setText("Agregar");
-           jButton1.addActionListener(e -> {
+          jButton1.addActionListener(e -> {
            // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> columnasEmpleado = List.of("ID-Codigo", "Tipo Accidente");
+           List<String> columnasTipoAccidente = List.of("ID-Codigo", "Tipo Accidente");
             
 // Crear y mostrar el formulario de agregar
             GenericFormAgregar formulario = new GenericFormAgregar(
                 (Frame) SwingUtilities.getWindowAncestor(this), 
                 true, 
-                columnasEmpleado
+                columnasTipoAccidente
+            );
+            formulario.setVisible(true);
+          });
+          
+           jButton2.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> columnasTipoAccidente = List.of("ID-Codigo", "Tipo Accidente");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormModificar formulario = new GenericFormModificar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                columnasTipoAccidente
             );
             formulario.setVisible(true);
           });

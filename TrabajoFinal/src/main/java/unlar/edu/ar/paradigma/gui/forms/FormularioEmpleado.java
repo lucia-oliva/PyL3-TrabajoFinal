@@ -137,6 +137,21 @@ public class FormularioEmpleado extends javax.swing.JPanel {
             );
             formulario.setVisible(true);
           });
+          
+          
+          
+            jButton2.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> columnasEmpleado = List.of("ID-Legajo", "Apellido-Nombre");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormModificar formulario = new GenericFormModificar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                columnasEmpleado
+            );
+            formulario.setVisible(true);
+          });
             
         jButton2.setText("Modificar");
 

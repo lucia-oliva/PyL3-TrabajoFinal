@@ -126,13 +126,26 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
          jButton1.setText("Agregar");
            jButton1.addActionListener(e -> {
            // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> columnasEmpleado = List.of("IzqDer", "Codigo");
+           List<String> zonaCuerpo = List.of("IzqDer", "Codigo");
             
 // Crear y mostrar el formulario de agregar
             GenericFormAgregar formulario = new GenericFormAgregar(
                 (Frame) SwingUtilities.getWindowAncestor(this), 
                 true, 
-                columnasEmpleado
+                zonaCuerpo
+            );
+            formulario.setVisible(true);
+          });
+           
+           jButton1.addActionListener(e -> {
+           // Definir las columnas que se mostrarán en el formulario agregar
+           List<String> zonaCuerpo = List.of("IzqDer", "Codigo");
+            
+// Crear y mostrar el formulario de agregar
+            GenericFormAgregar formulario = new GenericFormAgregar(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                true, 
+                zonaCuerpo
             );
             formulario.setVisible(true);
           });
