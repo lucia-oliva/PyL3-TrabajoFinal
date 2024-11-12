@@ -10,6 +10,7 @@ public class SetConexion {
     private static final String URL;
     private static final String USER;
     private static final String PASSWORD;
+    private static final String DB;
 
     static {
 
@@ -19,10 +20,13 @@ public class SetConexion {
         String POSTGRES_HOST = dotenv.get("POSTGRES_HOST");
         String POSTGRES_PORT = dotenv.get("POSTGRES_PORT");
         String POSTGRES_DB = dotenv.get("POSTGRES_DB");
-
-        URL = "jdbc:postgresql://" + POSTGRES_HOST + ":" + POSTGRES_PORT + "/" + POSTGRES_DB;
+        
+         //NO CAMBIES LO DE ABAJO Y SI CAMBIAN COMENTEN LA LINEA DE ABAJO
+        URL = "jdbc:postgresql://localhost:"+POSTGRES_PORT+"/"+POSTGRES_DB;
+        
         USER = POSTGRES_USER;
         PASSWORD = POSTGRES_PASSWORD;
+        DB = POSTGRES_DB;
 
     }
 

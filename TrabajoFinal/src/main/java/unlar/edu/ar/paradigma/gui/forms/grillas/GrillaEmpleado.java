@@ -56,4 +56,15 @@ public class GrillaEmpleado extends DefaultTableModel {
     public String getColumnName(int column) {
         return columnas[column];
     }
+    
+   public Empleado getEmpleadoByID(int legajo) {
+    for (Empleado empleado : datos) {
+        if (empleado.getLegajo() == legajo) {
+            return empleado;
+        }
+    }
+    return null;
+    
+}
+
 }
