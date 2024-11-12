@@ -4,6 +4,7 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
+import unlar.edu.ar.paradigma.gui.forms.abm.AmbEmpleado;
 import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -109,7 +110,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        RegistrarEmpleado registrarEmpleadoForm = new RegistrarEmpleado(this);
+        AmbEmpleado registrarEmpleadoForm = new AmbEmpleado(this);
         registrarEmpleadoForm.setVisible(true);
     }// GEN-LAST:event_jButton1ActionPerformed
 
