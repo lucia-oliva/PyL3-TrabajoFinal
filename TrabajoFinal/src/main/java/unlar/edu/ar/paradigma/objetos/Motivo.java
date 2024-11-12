@@ -5,10 +5,15 @@ public class Motivo {
     private Integer codigo;
     private String motivo;
 
+    public Motivo(){      
+}
+    
     public Motivo(Integer codigo, String motivo) {
         this.codigo = codigo;
         this.motivo = motivo;
     }
+
+
 
     public Integer getCodigo() {
         return codigo;

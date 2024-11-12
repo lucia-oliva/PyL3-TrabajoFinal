@@ -5,9 +5,19 @@
 package unlar.edu.ar.paradigma.gui.forms;
 
 import java.awt.Frame;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import unlar.edu.ar.paradigma.controladores.MotivoController;
+import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.forms.abm.AbMotivo;
+import unlar.edu.ar.paradigma.gui.forms.abm.MMotivo;
+import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo;
+import unlar.edu.ar.paradigma.objetos.Motivo;
 
 /**
  *
@@ -15,12 +25,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormularioMotivo extends javax.swing.JPanel {
 
+        private MotivoController motivoController;
     /**
      * Creates new form FormularioMotivo
      */
     public FormularioMotivo() {
+        
         initComponents();
         initCustomComponents();
+        motivoController = new MotivoController();
+        try {
+            Connection connection = SetConexion.getConnection();
+            motivoController.setConexion(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        actualizarTabla();
     }
 
     /**
@@ -44,12 +64,32 @@ public class FormularioMotivo extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,6 +124,73 @@ public class FormularioMotivo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        AbMotivo registrarMotivo = new AbMotivo(this);
+        registrarMotivo.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.getWindowAncestor(this).dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        // Obtener la fila seleccionada en la tabla
+    int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow >= 0) {
+        // Obtener el cÛdigo del motivo desde la tabla
+        Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
+        
+        // Confirmar la eliminaciÛn
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "øEstas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
+                "Confirmar eliminaciÛn", JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Llamar al mÈtodo en MotivoController para eliminar el motivo
+            Motivo motivo = motivoController.extraer(codigo);
+            if (motivo != null) {
+                boolean eliminado = motivoController.eliminar(motivo);
+                if (eliminado) {
+                    JOptionPane.showMessageDialog(this, "Motivo eliminado con exito", "exito", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla(); // Actualizar la tabla para reflejar los cambios
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el motivo", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione un motivo para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //redirigir a nuevo panel nashe
+        int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow >= 0) {
+        // Obtener el legajo del empleado seleccionado
+        Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
+        // Llamar al metodo del controlador para obtener el empleado por legajo
+        Motivo motivo = motivoController.extraer(codigo);
+        if (motivo != null) {
+            // Crear el formulario de modificaci√≥n y pasarle el empleado
+            MMotivo modificarMotivo = new MMotivo(motivo,this);
+            modificarMotivo.setVisible(true);
+             actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "Empleado no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Selecciona un empleado", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo grillaMotivo;
@@ -94,57 +201,29 @@ public class FormularioMotivo extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
-    private void initCustomComponents() {
-        DefaultTableModel model = new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Codigo", "Motivo"
-            }
-        );
+    
+    public void actualizarTabla() {
+        List<Motivo> motivos = motivoController.extraerTodo();
+        if (motivos != null && !motivos.isEmpty()) {
+            cargarMotivos(motivos);
+        } else {
+            System.out.println("No hay motivos para mostrar");
+        }
+    }
+    
+        private void cargarMotivos(List<Motivo> motivos) {
+        GrillaMotivo model = new GrillaMotivo();
         jTable1.setModel(model);
-        jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
-
-         jButton1.setText("Agregar");
-           jButton1.addActionListener(e -> {
-           // Definir las columnas que se mostrar√°n en el formulario agregar
-           List<String> motivo = List.of("ID-Codigo", "Motivo");
-            
-// Crear y mostrar el formulario de agregar
-            GenericFormAgregar formulario = new GenericFormAgregar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                motivo
-            );
-            formulario.setVisible(true);
-          });
-           
-             jButton2.addActionListener(e -> {
-           // Definir las columnas que se mostrar√°n en el formulario agregar
-           List<String> motivo = List.of("ID-Codigo", "Motivo");
-            
-// Crear y mostrar el formulario de agregar
-            GenericFormModificar formulario = new GenericFormModificar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                motivo
-            );
-            formulario.setVisible(true);
-          });
-
+        model.setRowCount(0);
+        model.setDatos(new ArrayList<>(motivos));
+    }
+    
+    private void initCustomComponents() {
+                jButton1.setText("Agregar");
         jButton2.setText("Modificar");
-
         jButton3.setText("Eliminar");
-        
         jButton4.setText("Cerrar");
-        
-       
+   
         
         revalidate();
         repaint();

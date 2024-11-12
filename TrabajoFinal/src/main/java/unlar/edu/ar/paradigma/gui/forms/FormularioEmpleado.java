@@ -128,14 +128,14 @@ public class FormularioEmpleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling czode here:
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow >=0){
             //Obtener el legajo del empleado
             Integer legajo = (Integer) jTable1.getValueAt(selectedRow,0);
             //Confirmar la eliminacion
             int confirm = JOptionPane.showConfirmDialog(this,
-                    "Â¿Estas seguro de que deseas eliminar al empleado con legajo" + legajo + "?", 
+                    "¿Estas seguro de que deseas eliminar al empleado con legajo" + legajo + "?", 
                     "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
             if(confirm == JOptionPane.YES_OPTION){
                 //Llamar al metodo en EmpleadoController para eliminar el empleado

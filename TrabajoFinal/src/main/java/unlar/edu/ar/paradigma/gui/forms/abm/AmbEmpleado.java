@@ -65,6 +65,11 @@ public class AmbEmpleado extends javax.swing.JFrame {
         txtApNomE.setText("txtApNomE");
 
         txtCodigoE.setText("txtCodigoE");
+        txtCodigoE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoEActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +158,10 @@ public class AmbEmpleado extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtCodigoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoEActionPerformed
 
     /**
      * @param args the command line arguments
