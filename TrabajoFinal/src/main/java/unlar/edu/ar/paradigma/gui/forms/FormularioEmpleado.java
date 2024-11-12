@@ -18,6 +18,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.EmpleadoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.forms.abm.AbmModEmpleado;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado;
 import unlar.edu.ar.paradigma.objetos.Empleado;
 
@@ -73,6 +74,11 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         });
 
         jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("jButton3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +162,28 @@ public class FormularioEmpleado extends javax.swing.JPanel {
          SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         // Obtener la fila seleccionada
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow >= 0) {
+        // Obtener el legajo del empleado seleccionado
+        Integer legajo = (Integer) jTable1.getValueAt(selectedRow, 0);
+        // Llamar al método del controlador para obtener el empleado por legajo
+        Empleado empleado = empleadoController.extraer(legajo);
+        if (empleado != null) {
+            // Crear el formulario de modificación y pasarle el empleado
+            AbmModEmpleado modificarEmpleadoForm = new AbmModEmpleado(empleado,this);
+            modificarEmpleadoForm.setVisible(true);
+             actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "Empleado no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Selecciona un empleado", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         AmbEmpleado registrarEmpleadoForm = new AmbEmpleado(this);
         registrarEmpleadoForm.setVisible(true);
@@ -203,17 +231,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         // formulario.setVisible(true);
         // });
 
-        jButton2.addActionListener(e -> {
-            // Definir las columnas que se mostrarán en el formulario agregar
-            List<String> columnasEmpleado = List.of("ID-Legajo", "Apellido-Nombre");
-
-            // Crear y mostrar el formulario de agregar
-            GenericFormModificar formulario = new GenericFormModificar(
-                    (Frame) SwingUtilities.getWindowAncestor(this),
-                    true,
-                    columnasEmpleado);
-            formulario.setVisible(true);
-        });
+      
 
         jButton2.setText("Modificar");
 
