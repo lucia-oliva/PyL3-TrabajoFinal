@@ -8,10 +8,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.controladores.ZonaCuerpoController;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddZonaCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.abm.ModZonaCuerpo;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaZonaCuerpo;
 import unlar.edu.ar.paradigma.objetos.ZonaCuerpo;
 
@@ -128,7 +130,22 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- 
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow >= 0) {
+            Integer idZona = (Integer) jTable1.getValueAt(selectedRow, 0);
+
+            ZonaCuerpo zonaCuerpo = zonaCuerpoController.extraer(idZona);
+
+            if (zonaCuerpo != null) {
+                ModZonaCuerpo modificarZonaCuerpo = new ModZonaCuerpo(zonaCuerpo, this);
+                modificarZonaCuerpo.setVisible(true);
+                actualizarTabla();
+            } else {
+                JOptionPane.showMessageDialog(this, "Zona no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecciona una zona", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
