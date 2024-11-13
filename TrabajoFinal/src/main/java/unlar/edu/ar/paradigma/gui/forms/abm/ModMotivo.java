@@ -16,7 +16,7 @@ import unlar.edu.ar.paradigma.objetos.Motivo;
  *
  * @author facun
  */
-public class MMotivo extends javax.swing.JFrame {
+public class ModMotivo extends javax.swing.JFrame {
     
     
    private Motivo motivo;
@@ -26,7 +26,7 @@ public class MMotivo extends javax.swing.JFrame {
     /**
      * Creates new form MMotivo
      */
-    public MMotivo(Motivo motivo,FormularioMotivo formularioMotivo) {
+    public ModMotivo(Motivo motivo,FormularioMotivo formularioMotivo) {
         this.formularioMotivo = formularioMotivo;
         initComponents();
         
@@ -67,7 +67,7 @@ public class MMotivo extends javax.swing.JFrame {
         label1.setPreferredSize(new java.awt.Dimension(50, 30));
         label1.setText("Modificar motivo");
 
-        jLabel1.setText("ID");
+        jLabel1.setText("Codigo");
 
         jLabel2.setText("Motivo");
 
@@ -189,14 +189,15 @@ public class MMotivo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

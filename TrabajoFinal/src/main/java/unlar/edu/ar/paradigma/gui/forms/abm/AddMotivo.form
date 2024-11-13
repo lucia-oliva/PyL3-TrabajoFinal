@@ -43,7 +43,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="146" max="32767" attributes="0"/>
+              <EmptySpace pref="158" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,7 +73,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Id Motivo"/>
+        <Property name="text" type="java.lang.String" value="Codigo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -98,17 +98,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jtID"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtIDActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtMotivo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtMotivoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

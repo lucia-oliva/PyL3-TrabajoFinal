@@ -4,6 +4,11 @@ public class TipoAccidente {
 
     private Integer codigo;
     private String tipo;
+    
+    
+    public TipoAccidente() {
+        
+    }
 
     public TipoAccidente(Integer codigo, String tipo) {
         this.codigo = codigo;

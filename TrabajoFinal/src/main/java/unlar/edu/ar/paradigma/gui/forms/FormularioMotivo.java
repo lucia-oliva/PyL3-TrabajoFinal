@@ -14,8 +14,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.MotivoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
-import unlar.edu.ar.paradigma.gui.forms.abm.AbMotivo;
-import unlar.edu.ar.paradigma.gui.forms.abm.MMotivo;
+import unlar.edu.ar.paradigma.gui.forms.abm.AddMotivo;
+import unlar.edu.ar.paradigma.gui.forms.abm.ModMotivo;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaMotivo;
 import unlar.edu.ar.paradigma.objetos.Motivo;
 
@@ -126,7 +126,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AbMotivo registrarMotivo = new AbMotivo(this);
+        AddMotivo registrarMotivo = new AddMotivo(this);
         registrarMotivo.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -180,7 +180,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
         Motivo motivo = motivoController.extraer(codigo);
         if (motivo != null) {
             // Crear el formulario de modificación y pasarle el empleado
-            MMotivo modificarMotivo = new MMotivo(motivo,this);
+            ModMotivo modificarMotivo = new ModMotivo(motivo,this);
             modificarMotivo.setVisible(true);
              actualizarTabla();
         } else {
@@ -219,7 +219,7 @@ public class FormularioMotivo extends javax.swing.JPanel {
     }
     
     private void initCustomComponents() {
-                jButton1.setText("Agregar");
+        jButton1.setText("Agregar");
         jButton2.setText("Modificar");
         jButton3.setText("Eliminar");
         jButton4.setText("Cerrar");

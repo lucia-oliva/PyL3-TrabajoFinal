@@ -6,31 +6,33 @@ package unlar.edu.ar.paradigma.gui.forms.abm;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import unlar.edu.ar.paradigma.controladores.MotivoController;
-import unlar.edu.ar.paradigma.gui.forms.FormularioMotivo;
+import unlar.edu.ar.paradigma.controladores.TipoAccidenteController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
-import unlar.edu.ar.paradigma.objetos.Motivo;
+import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
+import unlar.edu.ar.paradigma.objetos.TipoAccidente;
+
 
 /**
  *
  * @author facun
  */
-public class AbMotivo extends javax.swing.JFrame {
+public class AddTipoAccidente extends javax.swing.JFrame {
 
-        private MotivoController motivoController;
-        private FormularioMotivo formularioMotivo;
+        private TipoAccidenteController tipoAccidenteController;
+        private FormularioTipoAccidente formularioTipoAccidente;
+    
     /**
      * Creates new form AbMotivo
      */
-    public AbMotivo(FormularioMotivo formularioMotivo) {
-        this.formularioMotivo = formularioMotivo;
+    public AddTipoAccidente(FormularioTipoAccidente formularioTipoAccidente) {
+        this.formularioTipoAccidente = formularioTipoAccidente;
         initComponents();
         
         
-         motivoController = new MotivoController();
+         tipoAccidenteController = new TipoAccidenteController();
         try {
         Connection connection = SetConexion.getConnection();
-            motivoController.setConexion(connection);
+            tipoAccidenteController.setConexion(connection);
         } catch (SQLException e) {
             System.err.println("Error al establecer la conexión: " + e.getMessage());
         }
@@ -50,13 +52,13 @@ public class AbMotivo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jtID = new javax.swing.JTextField();
-        jtMotivo = new javax.swing.JTextField();
+        jtAccidente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Id Motivo");
+        jLabel1.setText("Codigo");
 
-        jLabel2.setText("Motivo");
+        jLabel2.setText("Tipo");
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,14 +74,17 @@ public class AbMotivo extends javax.swing.JFrame {
             }
         });
 
-        jtID.setText("jtID");
         jtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtIDActionPerformed(evt);
             }
         });
 
-        jtMotivo.setText("jTextField2");
+        jtAccidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtAccidenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,9 +103,9 @@ public class AbMotivo extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtMotivo, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(jtAccidente, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                             .addComponent(jtID))))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +117,7 @@ public class AbMotivo extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtAccidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -127,15 +132,15 @@ public class AbMotivo extends javax.swing.JFrame {
         // TODO add your handling code here:
     
             int idMotivo = Integer.parseInt(jtID.getText());
-            String motivoTexto = jtMotivo.getText();
+            String accidenteTexto = jtAccidente.getText();
 
-            Motivo motivo = new Motivo();
-            motivo.setCodigo(idMotivo);
-            motivo.setMotivo(motivoTexto);
+            TipoAccidente tipoAccidente = new TipoAccidente();
+            tipoAccidente.setCodigo(idMotivo);
+            tipoAccidente.setTipo(accidenteTexto);
 
-            if (motivoController.crear(motivo)) {
-                System.out.println("Motivo creado exitosamente.");
-                formularioMotivo.actualizarTabla();
+            if (tipoAccidenteController.crear(tipoAccidente)) {
+                System.out.println("Tipo accidente creado exitosamente.");
+                formularioTipoAccidente.actualizarTabla();
             } else {
                 System.out.println("Hubo un error al crear el motivo.");
             }
@@ -154,6 +159,10 @@ public class AbMotivo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtIDActionPerformed
 
+    private void jtAccidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAccidenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtAccidenteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,21 +180,24 @@ public class AbMotivo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTipoAccidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTipoAccidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTipoAccidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbMotivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTipoAccidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormularioMotivo formularioMotivo = new FormularioMotivo();
-                new AbMotivo(formularioMotivo).setVisible(true);
+                FormularioTipoAccidente formularioTipoAccidente = new FormularioTipoAccidente();
+                new AddTipoAccidente(formularioTipoAccidente).setVisible(true);
             }
         });
     }
@@ -195,7 +207,7 @@ public class AbMotivo extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jtAccidente;
     private javax.swing.JTextField jtID;
-    private javax.swing.JTextField jtMotivo;
     // End of variables declaration//GEN-END:variables
 }
