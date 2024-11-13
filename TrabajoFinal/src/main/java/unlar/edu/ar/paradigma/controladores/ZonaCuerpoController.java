@@ -3,6 +3,7 @@ package unlar.edu.ar.paradigma.controladores;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 import unlar.edu.ar.paradigma.objetos.ZonaCuerpo;
 
 public class ZonaCuerpoController implements IABMController<Integer, ZonaCuerpo> {
@@ -110,5 +111,53 @@ public class ZonaCuerpoController implements IABMController<Integer, ZonaCuerpo>
         }
 
         return true;
+    }
+
+    public List<String> obtenerParteCuerpo() {
+        List<String> listaPartesCuerpo = new ArrayList<>();
+        String query = "SELECT parte FROM ParteCuerpo";
+        try (PreparedStatement statement = connection.prepareStatement(query); ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                listaPartesCuerpo.add(rs.getString("parte"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener partes del cuerpo: " + e.getMessage());
+        }
+        return listaPartesCuerpo;
+    }
+    
+    public int obtenerIdParteCuerpo(String parteCuerpo) {
+        int idParteCuerpo = -1; // Valor por defecto si no se encuentra
+
+        String query = "SELECT codigo FROM ParteCuerpo WHERE parte = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, parteCuerpo);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                idParteCuerpo = rs.getInt("codigo");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID de la parte del cuerpo: " + e.getMessage());
+        }
+
+        return idParteCuerpo;
+    }
+
+    public int obtenerNuevoIdZona() {
+        int idZona = -1;
+
+        String query = "SELECT MAX(id_zona) + 1 FROM ZonaCuerpo";
+
+        try (PreparedStatement statement = connection.prepareStatement(query);
+                ResultSet rs = statement.executeQuery()) {
+            if (rs.next()) {
+                idZona = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener nuevo ID de zona: " + e.getMessage());
+        }
+
+        return idZona;
     }
 }

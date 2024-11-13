@@ -5,9 +5,17 @@
 package unlar.edu.ar.paradigma.gui.forms;
 
 import java.awt.Frame;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.controladores.ZonaCuerpoController;
+import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaZonaCuerpo;
+import unlar.edu.ar.paradigma.objetos.ZonaCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.abm.AddZonaCuerpo;
 
 /**
  *
@@ -15,12 +23,41 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormularioZonaCuerpo extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FormularioZonaCuerpo
-     */
+    private ZonaCuerpoController zonaCuerpoController;
     public FormularioZonaCuerpo() {
         initComponents();
         initCustomComponents();
+        zonaCuerpoController = new ZonaCuerpoController();
+        try {
+            Connection connection = SetConexion.getConnection();
+            zonaCuerpoController.setConexion(connection);
+        } catch (SQLException e) {
+            System.out.println("No se pudo establecer la conexion en Formulario");
+        }
+        actualizarTabla();
+    }
+    
+    private void cargarZonasCuerpo(List<ZonaCuerpo> zonaCuerpo) {
+        GrillaZonaCuerpo model = new GrillaZonaCuerpo();
+        jTable1.setModel(model);
+        model.setRowCount(0);
+        model.setDatos(new ArrayList<>(zonaCuerpo));
+
+        // for(Empleado empleado : empleados){
+        // model.addRow(new Object[]{empleado.getLegajo(),
+        // empleado.getApellido_nombre()});
+        // }
+    }
+    
+    public void actualizarTabla() {
+        List<ZonaCuerpo> zonasCuerpo = zonaCuerpoController.extraerTodo();
+        // MOstrar en tabla
+        if (zonasCuerpo != null && !zonasCuerpo.isEmpty()) {
+            cargarZonasCuerpo(zonasCuerpo);
+        } else {
+            System.out.println("No hay empleados");
+        }
+
     }
 
     /**
@@ -117,30 +154,24 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
 
          jButton1.setText("Agregar");
            jButton1.addActionListener(e -> {
-           // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> zonaCuerpo = List.of("IzqDer", "Codigo");
-            
-// Crear y mostrar el formulario de agregar
-            GenericFormAgregar formulario = new GenericFormAgregar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                zonaCuerpo
-            );
-            formulario.setVisible(true);
+            AddZonaCuerpo addZonaCuerpo = new AddZonaCuerpo(this);
+            addZonaCuerpo.setVisible(true);
+               
+          
           });
            
-           jButton1.addActionListener(e -> {
+          // jButton1.addActionListener(e -> {
            // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> zonaCuerpo = List.of("IzqDer", "Codigo");
+          // List<String> zonaCuerpo = List.of("IzqDer", "Codigo");
             
 // Crear y mostrar el formulario de agregar
-            GenericFormAgregar formulario = new GenericFormAgregar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                zonaCuerpo
-            );
-            formulario.setVisible(true);
-          });
+            //GenericFormAgregar formulario = new GenericFormAgregar(
+              //  (Frame) SwingUtilities.getWindowAncestor(this), 
+                //true, 
+               // zonaCuerpo
+            //);
+            //formulario.setVisible(true);
+         // });
 
         jButton2.setText("Modificar");
 

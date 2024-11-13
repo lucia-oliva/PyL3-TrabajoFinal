@@ -1,10 +1,10 @@
 package unlar.edu.ar.paradigma.gui.forms.grillas;
 
 import java.util.ArrayList;
-import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.objetos.ZonaCuerpo;
 
-public class GrillaZonaCuerpo extends AbstractTableModel {
+public class GrillaZonaCuerpo extends DefaultTableModel {
 
     private ArrayList<ZonaCuerpo> datos = new ArrayList<>();
     private String[] columnas = { "ID Zona", "Codigo Parte Cuerpo", "Izquierdo o Derecho" };
@@ -22,6 +22,9 @@ public class GrillaZonaCuerpo extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
+        if(datos == null) {
+            return 0;
+        }
         return datos.size();
     }
 

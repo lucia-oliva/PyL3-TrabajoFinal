@@ -6,6 +6,10 @@ public class ZonaCuerpo {
     private Integer codigo;
     private Integer izqder;
 
+    public ZonaCuerpo() {
+    }
+
+    
     public ZonaCuerpo(Integer id_zona, Integer codigo, Integer izqder) {
         this.id_zona = id_zona;
         this.codigo = codigo;
