@@ -147,9 +147,11 @@ public class AddZonaCuerpo extends javax.swing.JFrame {
     
         
         if (zonaCuerpoController.crear(zonaCuerpoObj)) {
-            System.out.println("Zona cuerpo creada exitosamente.");
-            // Actualizar la tabla en el formulario principal
+        System.out.println("Zona cuerpo creada exitosamente.");
+        // Actualizar la tabla solo si formularioZonaCuerpo no es null
+        if (formularioZonaCuerpo != null) {
             formularioZonaCuerpo.actualizarTabla();
+        }
         } else {
             System.out.println("Hubo un error al crear la zona cuerpo.");
         }
