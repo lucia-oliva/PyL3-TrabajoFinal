@@ -228,6 +228,7 @@ public class AddAccidente extends javax.swing.JFrame {
         // Llamar al controlador para insertar el accidente
         if (accidenteController.crear(accidenteDTO)) {
             System.out.println("Accidente agregado correctamente.");
+            principal.actualizarTabla();
         } else {
             System.out.println("Error al agregar el accidente.");
         }

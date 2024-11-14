@@ -16,6 +16,7 @@ import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
 import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
 import unlar.edu.ar.paradigma.gui.forms.GenericFormAgregar;
 import unlar.edu.ar.paradigma.gui.forms.FormularioParteCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.abm.AddAccidente;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes;
 import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 
@@ -75,6 +76,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("jButton5");
 
@@ -169,6 +175,13 @@ public class Principal extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        AddAccidente registrarAccidente = new AddAccidente(this);
+        registrarAccidente.setVisible(true);
+      
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
