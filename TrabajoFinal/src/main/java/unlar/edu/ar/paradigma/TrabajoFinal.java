@@ -13,8 +13,7 @@ public class TrabajoFinal {
 
         Principal principal = new Principal();
         principal.setVisible(true);
-        AddAccidente addAccidente = new AddAccidente(principal);
-        addAccidente.setVisible(true);
+        
 
         try {
             Connection connection = SetConexion.getConnection();
