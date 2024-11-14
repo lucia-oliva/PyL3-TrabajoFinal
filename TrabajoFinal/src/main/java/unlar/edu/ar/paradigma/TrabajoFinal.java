@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.forms.abm.AddAccidente;
 
 public class TrabajoFinal {
 
@@ -12,6 +13,8 @@ public class TrabajoFinal {
 
         Principal principal = new Principal();
         principal.setVisible(true);
+        AddAccidente addAccidente = new AddAccidente(principal);
+        addAccidente.setVisible(true);
 
         try {
             Connection connection = SetConexion.getConnection();

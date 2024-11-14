@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 
 public class AccidenteController implements IABMController<Integer, AccidenteDTO> {
@@ -212,4 +213,189 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
         }
     }
 
+    public List<String> obtenerEmpleados() {
+        List<String> empleados = new ArrayList<>();
+        String query = "SELECT e.apellido_nombre FROM accidente a INNER JOIN empleado e ON e.legajo = a.legajo";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                empleados.add(rs.getString("apellido_nombre"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener empleados: " + e.getMessage());
+        }
+        return empleados;
+    }
+
+    // Método para llenar comboBox con motivos de accidente
+    public List<String> obtenerMotivos() {
+        List<String> motivos = new ArrayList<>();
+        String query = "SELECT m.motivo FROM accidente a INNER JOIN motivo m ON m.codigo = a.codigo_motivo";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                motivos.add(rs.getString("motivo"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener motivos: " + e.getMessage());
+        }
+        return motivos;
+    }
+
+    // Método para llenar comboBox con partes del cuerpo involucradas en accidentes
+    public List<String> obtenerPartesCuerpo() {
+        List<String> partesCuerpo = new ArrayList<>();
+        String query = "SELECT pc.parte FROM accidente a " +
+                       "INNER JOIN accidentezonacuerpo azc ON azc.numero_accidente = a.numero " +
+                       "INNER JOIN zonacuerpo zc ON zc.id_zona = azc.id_zona " +
+                       "INNER JOIN partecuerpo pc ON pc.codigo = zc.codigo";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                partesCuerpo.add(rs.getString("parte"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener partes del cuerpo: " + e.getMessage());
+        }
+        return partesCuerpo;
+    }
+
+
+    public int obtenerIdEmpleado(String empleado) {
+        int idEmpleado = -1; // Valor por defecto si no se encuentra
+    
+        String query = "SELECT legajo FROM empleado WHERE apellido_nombre = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, empleado);
+            ResultSet rs = statement.executeQuery();
+    
+            if (rs.next()) {
+                idEmpleado = rs.getInt("legajo");  // Supongo que 'legajo' es el identificador único
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID del empleado: " + e.getMessage());
+        }
+    
+        return idEmpleado;
+    }
+    
+    public int obtenerIdMotivo(String motivo) {
+        int idMotivo = -1; // Valor por defecto si no se encuentra
+        String query = "SELECT codigo FROM Motivo WHERE motivo = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, motivo);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                idMotivo = rs.getInt("codigo");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID del motivo: " + e.getMessage());
+        }
+        return idMotivo;
+    }
+
+    public int obtenerIdParteCuerpo(String parteCuerpo) {
+        int idParteCuerpo = -1; // Valor por defecto si no se encuentra
+        String query = "SELECT codigo FROM ParteCuerpo WHERE parte = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, parteCuerpo);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                idParteCuerpo = rs.getInt("codigo");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID de la parte del cuerpo: " + e.getMessage());
+        }
+        return idParteCuerpo;
+    }
+    
+    public int obtenerIdZonaCuerpo(String zonaCuerpo) {
+        int idZonaCuerpo = -1; // Valor por defecto si no se encuentra
+        int zonaCuerpoInt = -1;
+    
+        // Mapear la cadena "Izquierda" a un valor numérico (1), "Derecha" a (2), etc.
+        if ("Izquierda".equalsIgnoreCase(zonaCuerpo)) {
+            zonaCuerpoInt = 1;
+        } else if ("Derecha".equalsIgnoreCase(zonaCuerpo)) {
+            zonaCuerpoInt = 2;
+        } else {
+            // Manejar otros casos si es necesario
+            System.err.println("Valor no válido para zona de cuerpo: " + zonaCuerpo);
+            return idZonaCuerpo;
+        }
+    
+        String query = "SELECT id_zona FROM ZonaCuerpo WHERE izqder = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, zonaCuerpoInt);
+    
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                idZonaCuerpo = rs.getInt("id_zona");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID de la zona de cuerpo: " + e.getMessage());
+        }
+        return idZonaCuerpo;
+    }
+    
+
+    public int obtenerNuevaId() {
+        int nuevoNumero = -1; // Valor por defecto si no se encuentra un valor válido
+    
+        String query = "SELECT MAX(numero) + 1 FROM Accidente";
+    
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet rs = statement.executeQuery()) {
+            if (rs.next()) {
+                nuevoNumero = rs.getInt(1);
+                // Si el MAX(numero) es NULL (es decir, si no hay registros previos), empezamos desde 1
+                if (nuevoNumero == 0) {
+                    nuevoNumero = 1;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el nuevo número de accidente: " + e.getMessage());
+        }
+    
+        return nuevoNumero;
+    }
+
+    public List<String> obtenerTiposAccidente() {
+        List<String> tiposAccidente = new ArrayList<>();
+        String query = "SELECT ta.tipo FROM Accidente a " +
+                       "INNER JOIN tipoaccidente ta ON ta.codigo = a.codigo_tipo_accidente";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                tiposAccidente.add(rs.getString("tipo"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener tipos de accidente: " + e.getMessage());
+        }
+        return tiposAccidente;
+    }
+    
+    // Método para obtener el ID de un tipo de accidente a partir de su nombre
+    public int obtenerIdTipoAccidente(String tipoAccidente) {
+        int idTipoAccidente = -1; // Valor por defecto si no se encuentra
+        String query = "SELECT ta.codigo FROM tipoaccidente ta WHERE ta.tipo = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, tipoAccidente);
+            ResultSet rs = statement.executeQuery();
+            
+            if (rs.next()) {
+                idTipoAccidente = rs.getInt("codigo");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID del tipo de accidente: " + e.getMessage());
+        }
+        
+        return idTipoAccidente;
+    }
+    
 }

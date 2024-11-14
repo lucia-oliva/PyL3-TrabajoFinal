@@ -13,6 +13,10 @@ public class AccidenteDTO {
     private Integer id_zona;
     private Integer codigo;
 
+    
+    public AccidenteDTO() {
+    }
+
     public AccidenteDTO(Integer numero, Date fecha_del_accidente, String ubicacion, Integer legajo,
             Integer codigo_motivo, Integer codigo_tipo_accidente, Integer id_zona, Integer codigo) {
         this.numero = numero;
