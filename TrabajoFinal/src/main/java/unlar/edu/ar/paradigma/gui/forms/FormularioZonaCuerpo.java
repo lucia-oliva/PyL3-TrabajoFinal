@@ -154,7 +154,34 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Obtener la fila seleccionada en la tabla
+        int selectedRow = jTable1.getSelectedRow();
 
+        if (selectedRow >= 0) {
+            // Obtener el código de la zona desde la tabla
+            Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
+
+            // Confirmar la eliminación
+            int confirm = JOptionPane.showConfirmDialog(this,
+                    "¿Estás seguro de que deseas eliminar la zona con código " + codigo + "?",
+                    "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                // Llamar al método en ZonaCuerpoController para eliminar la zona
+                ZonaCuerpo zonaCuerpo = zonaCuerpoController.extraer(codigo);
+                if (zonaCuerpo != null) {
+                    boolean eliminado = zonaCuerpoController.eliminar(zonaCuerpo);
+                    if (eliminado) {
+                        JOptionPane.showMessageDialog(this, "Zona eliminada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla(); // Actualizar la tabla para reflejar los cambios
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No se pudo eliminar la zona", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una zona para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
