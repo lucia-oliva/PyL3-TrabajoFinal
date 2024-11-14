@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.controladores.TipoAccidenteController;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddTipoAccidente;
+import unlar.edu.ar.paradigma.gui.forms.abm.ModTipoAccidente;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaTipoAccidente;
 import unlar.edu.ar.paradigma.objetos.TipoAccidente;
 
@@ -133,7 +134,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //redirigir a nuevo panel nashe
-        /*
+        
         int selectedRow = jTable1.getSelectedRow();
     if (selectedRow >= 0) {
         // Obtener el legajo del empleado seleccionado
@@ -142,8 +143,8 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
         TipoAccidente tipoAccidente = tipoAccidenteController.extraer(codigo);
         if (tipoAccidente != null) {
             // Crear el formulario de modificación y pasarle el empleado
-            ModTipoAccidente modificarMotivo = new ModTipoAccidente(tipoAccidente,this);
-            modificarMotivo.setVisible(true);
+            ModTipoAccidente modificarTipoAccidente = new ModTipoAccidente(tipoAccidente,this);
+            modificarTipoAccidente.setVisible(true);
              actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(this, "Empleado no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -151,7 +152,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
     } else {
         JOptionPane.showMessageDialog(this, "Selecciona un empleado", "Warning", JOptionPane.WARNING_MESSAGE);
     }
-*/
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
