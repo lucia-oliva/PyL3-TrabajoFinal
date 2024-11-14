@@ -215,7 +215,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
 
     public List<String> obtenerEmpleados() {
         List<String> empleados = new ArrayList<>();
-        String query = "SELECT e.apellido_nombre FROM accidente a INNER JOIN empleado e ON e.legajo = a.legajo";
+        String query = "SELECT apellido_nombre FROM empleado";
         
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery()) {
@@ -231,7 +231,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
     // Método para llenar comboBox con motivos de accidente
     public List<String> obtenerMotivos() {
         List<String> motivos = new ArrayList<>();
-        String query = "SELECT m.motivo FROM accidente a INNER JOIN motivo m ON m.codigo = a.codigo_motivo";
+        String query = "SELECT motivo FROM motivo";
         
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery()) {
@@ -247,10 +247,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
     // Método para llenar comboBox con partes del cuerpo involucradas en accidentes
     public List<String> obtenerPartesCuerpo() {
         List<String> partesCuerpo = new ArrayList<>();
-        String query = "SELECT pc.parte FROM accidente a " +
-                       "INNER JOIN accidentezonacuerpo azc ON azc.numero_accidente = a.numero " +
-                       "INNER JOIN zonacuerpo zc ON zc.id_zona = azc.id_zona " +
-                       "INNER JOIN partecuerpo pc ON pc.codigo = zc.codigo";
+        String query = "SELECT parte FROM partecuerpo";
         
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery()) {
@@ -365,8 +362,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
 
     public List<String> obtenerTiposAccidente() {
         List<String> tiposAccidente = new ArrayList<>();
-        String query = "SELECT ta.tipo FROM Accidente a " +
-                       "INNER JOIN tipoaccidente ta ON ta.codigo = a.codigo_tipo_accidente";
+        String query = "SELECT tipo FROM tipoaccidente";
         
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery()) {
