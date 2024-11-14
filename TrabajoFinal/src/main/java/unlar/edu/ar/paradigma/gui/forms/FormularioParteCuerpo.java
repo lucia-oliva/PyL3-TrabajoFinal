@@ -15,7 +15,10 @@ import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.ParteCuerpoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddParteCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.abm.ModParteCuerpo;
+
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaParteCuerpo;
+
 import unlar.edu.ar.paradigma.objetos.ParteCuerpo;
 
 /**
@@ -138,7 +141,25 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+             // TODO add your handling code here:
+         // Obtener la fila seleccionada
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow >= 0) {
+        // Obtener el legajo del empleado seleccionado
+        Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
+        // Llamar al mÃ©todo del controlador para obtener el empleado por legajo
+        ParteCuerpo parteCuerpo = parteCuerpoController.extraer(codigo);
+        if (parteCuerpo != null) {
+            // Crear el formulario de modificacin y pasarle el empleado
+            ModParteCuerpo modificarParteCuerpoForm = new ModParteCuerpo(parteCuerpo,this);
+            modificarParteCuerpoForm.setVisible(true);
+             actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "Parte Cuerpo no se ha encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Selecciona un Parte Cuerpo", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -147,16 +168,16 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
     
     if (selectedRow >= 0) {
-        // Obtener el código del motivo desde la tabla
+        // Obtener el cï¿½digo del motivo desde la tabla
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
         
-        // Confirmar la eliminación
+        // Confirmar la eliminaciï¿½n
         int confirm = JOptionPane.showConfirmDialog(this,
-                "¿Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
-                "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+                "ï¿½Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
+                "Confirmar eliminaciï¿½n", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
-            // Llamar al método en MotivoController para eliminar el motivo
+            // Llamar al mï¿½todo en MotivoController para eliminar el motivo
             ParteCuerpo parteCuerpo = parteCuerpoController.extraer(codigo);
             if (parteCuerpo != null) {
                 boolean eliminado = parteCuerpoController.eliminar(parteCuerpo);
