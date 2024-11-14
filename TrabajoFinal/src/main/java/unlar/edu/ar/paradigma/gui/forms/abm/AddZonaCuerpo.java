@@ -13,39 +13,46 @@ import unlar.edu.ar.paradigma.controladores.ZonaCuerpoController;
 import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
 import unlar.edu.ar.paradigma.objetos.ZonaCuerpo;
 
+
+
 /**
  *
- * @author Dilan
+ * @author facun
  */
 public class AddZonaCuerpo extends javax.swing.JFrame {
 
     private ZonaCuerpoController zonaCuerpoController;
     private FormularioZonaCuerpo formularioZonaCuerpo;
     
+    private static final String[] OPCIONES_ZONA_CUERPO = {"Izquierda", "Derecha"};
+    
+    /**
+     * Creates new form AbMotivo
+     */
     public AddZonaCuerpo(FormularioZonaCuerpo formularioZonaCuerpo) {
         this.formularioZonaCuerpo = formularioZonaCuerpo;
+        this.zonaCuerpoController = new ZonaCuerpoController();
         initComponents();
-        
-        zonaCuerpoController = new ZonaCuerpoController();
+        initController();
+        cargarOpcionesComboBoxes();
+
+    }
+    
+    private void initController() {
         try {
             Connection connection = SetConexion.getConnection();
             zonaCuerpoController.setConexion(connection);
         } catch (SQLException e) {
             System.err.println("Error al establecer la conexión: " + e.getMessage());
         }
-        
-        // Carga las opciones para el combo box de ZonaCuerpo
-        String[] opcionesZonaCuerpo = {"Izquierda", "Derecha"};
-        jcbZonaCuerpo.setModel(new DefaultComboBoxModel<>(opcionesZonaCuerpo));
-        
-        // Carga las opciones para el combo box de ParteCuerpo
+    }
+    
+    private void cargarOpcionesComboBoxes() {
+        jcbZonaCuerpo.setModel(new DefaultComboBoxModel<>(OPCIONES_ZONA_CUERPO));
+
         List<String> partesCuerpo = zonaCuerpoController.obtenerParteCuerpo();
-        DefaultComboBoxModel<String> modeloPartesCuerpo = new DefaultComboBoxModel<>();
-        for (String parte : partesCuerpo) {
-            modeloPartesCuerpo.addElement(parte);
-        }
+        DefaultComboBoxModel<String> modeloPartesCuerpo = new DefaultComboBoxModel<>(partesCuerpo.toArray(new String[0]));
         jcbParteCuerpo.setModel(modeloPartesCuerpo);
-        
     }
 
     /**
@@ -57,14 +64,18 @@ public class AddZonaCuerpo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlZonaCuerpo = new javax.swing.JLabel();
+        jlParteCuerpo = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jcbZonaCuerpo = new javax.swing.JComboBox<>();
         jcbParteCuerpo = new javax.swing.JComboBox<>();
-        jlParteCuerpo = new javax.swing.JLabel();
-        jlZonaCuerpo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jlZonaCuerpo.setText("Zona del cuerpo:");
+
+        jlParteCuerpo.setText("Parte del cuerpo:");
 
         jbAceptar.setText("Aceptar");
         jbAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,89 +95,91 @@ public class AddZonaCuerpo extends javax.swing.JFrame {
 
         jcbParteCuerpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jlParteCuerpo.setText("Parte:");
-
-        jlZonaCuerpo.setText("Zona:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlZonaCuerpo)
-                            .addComponent(jlParteCuerpo))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbZonaCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbAceptar)
-                        .addGap(34, 34, 34)
-                        .addComponent(jbCancelar)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlParteCuerpo)
+                            .addComponent(jlZonaCuerpo))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jcbZonaCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlZonaCuerpo)
                     .addComponent(jcbZonaCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlParteCuerpo)
                     .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAceptar)
-                    .addComponent(jbCancelar))
-                .addGap(42, 42, 42))
+                    .addComponent(jbCancelar)
+                    .addComponent(jbAceptar))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
-        ZonaCuerpo zonaCuerpoObj = new ZonaCuerpo();
+        String zonaCuerpo = (String) jcbZonaCuerpo.getSelectedItem();
+        String parteCuerpo = (String) jcbParteCuerpo.getSelectedItem();
         
-        String zonaCuerpo = jcbZonaCuerpo.getSelectedItem().toString();
-        String parteCuerpo = jcbParteCuerpo.getSelectedItem().toString();
+        if (zonaCuerpo == null || parteCuerpo == null) {
+            System.err.println("Seleccione una zona y parte del cuerpo.");
+            return;
+        }
         
-        int idParteCuerpo = zonaCuerpoController.obtenerIdParteCuerpo(parteCuerpo);
-        int izquierdaDerecha = zonaCuerpo.equals("Izquierda") ? 0 : 1;
-        
-        int idZona = zonaCuerpoController.obtenerNuevoIdZona();
-                
-        zonaCuerpoObj.setId_zona(idZona);
-        zonaCuerpoObj.setCodigo(idParteCuerpo);
-        zonaCuerpoObj.setIzqder(izquierdaDerecha);
-    
+        ZonaCuerpo zonaCuerpoObj = construirZonaCuerpo(zonaCuerpo, parteCuerpo);
         
         if (zonaCuerpoController.crear(zonaCuerpoObj)) {
-        System.out.println("Zona cuerpo creada exitosamente.");
-        // Actualizar la tabla solo si formularioZonaCuerpo no es null
-        if (formularioZonaCuerpo != null) {
-            formularioZonaCuerpo.actualizarTabla();
-        }
+            System.out.println("Zona cuerpo creada exitosamente.");
+            if (formularioZonaCuerpo != null) {
+                formularioZonaCuerpo.actualizarTabla();
+            }
         } else {
-            System.out.println("Hubo un error al crear la zona cuerpo.");
+            System.err.println("Hubo un error al crear la zona cuerpo.");
         }
-        
-        this.dispose();
+
+        dispose();
     }//GEN-LAST:event_jbAceptarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        this.dispose();
+        // TODO add your handling code here:
+                dispose();
+
     }//GEN-LAST:event_jbCancelarActionPerformed
 
-    private void jcbZonaCuerpoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbZonaCuerpoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbZonaCuerpoActionPerformed
+    
+    private ZonaCuerpo construirZonaCuerpo(String zonaCuerpo, String parteCuerpo) {
+        int idParteCuerpo = zonaCuerpoController.obtenerIdParteCuerpo(parteCuerpo);
+        int izquierdaDerecha = "Izquierda".equals(zonaCuerpo) ? 0 : 1;
+        int idZona = zonaCuerpoController.obtenerNuevoIdZona();
 
+        ZonaCuerpo zonaCuerpoObj = new ZonaCuerpo();
+        zonaCuerpoObj.setId_zona(idZona);
+        zonaCuerpoObj.setCodigo(idParteCuerpo);
+        zonaCuerpoObj.setIzqder(izquierdaDerecha);
+
+        return zonaCuerpoObj;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -192,13 +205,6 @@ public class AddZonaCuerpo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AddZonaCuerpo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
