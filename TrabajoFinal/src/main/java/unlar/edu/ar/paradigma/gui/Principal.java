@@ -2,18 +2,27 @@ package unlar.edu.ar.paradigma.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import unlar.edu.ar.paradigma.controladores.AccidenteController;
+import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;
 import unlar.edu.ar.paradigma.gui.forms.FormularioMotivo;
 import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
 import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
 import unlar.edu.ar.paradigma.gui.forms.GenericFormAgregar;
 import unlar.edu.ar.paradigma.gui.forms.FormularioParteCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes;
+import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
 
 
 public class Principal extends javax.swing.JFrame {
+    
+    private AccidenteController accidenteController;
     
     
     private JDesktopPane desktopPane;
@@ -26,6 +35,15 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         initCustomComponents(); 
         addCustomMenu();
+        
+        accidenteController = new AccidenteController();
+        try {
+            Connection connection = SetConexion.getConnection();
+            accidenteController.setConexion(connection);
+        } catch (SQLException e) {
+        }
+        actualizarTabla();
+        
     }
 
    
@@ -40,8 +58,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grillaAccidentes = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -52,24 +71,19 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        jTable1.setModel(grillaAccidentes);
+        jScrollPane2.setViewportView(jTable1);
 
         jButton4.setText("jButton4");
 
         jButton5.setText("jButton5");
 
         jButton6.setText("jButton6");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jmenuOpciones.setText("Opciones");
 
@@ -126,6 +140,36 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiABMAccidentesActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        //eliminar hacer nashe
+        int selectedRow = jTable1.getSelectedRow();
+        if(selectedRow >=0){
+            //Obtener el legajo del empleado
+            Integer numero = (Integer) jTable1.getValueAt(selectedRow,0);
+            //Confirmar la eliminacion
+            int confirm = JOptionPane.showConfirmDialog(this,
+                    "øEstas seguro de que deseas eliminar al empleado con legajo" + numero + "?", 
+                    "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
+            if(confirm == JOptionPane.YES_OPTION){
+                //Llamar al metodo en EmpleadoController para eliminar el empleado
+                AccidenteDTO accidente = accidenteController.extraer(numero);
+                if(accidente != null){
+                    boolean eliminado = accidenteController.eliminar(accidente);
+                    if(eliminado){
+                        JOptionPane.showMessageDialog(this, "Empleado eliminado con exito","Exito",JOptionPane.INFORMATION_MESSAGE);
+                        actualizarTabla();
+                    }else{
+                        JOptionPane.showMessageDialog(this, "No se encontro el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Seleccione un empleado", "Warning",JOptionPane.WARNING_MESSAGE);
+            }
+        
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,13 +206,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes grillaAccidentes;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JMenu jmenuOpciones;
     private javax.swing.JMenuItem jmiABMAccidentes;
     // End of variables declaration//GEN-END:variables
@@ -294,6 +339,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void initCustomComponents() {
         
+        /*
         DefaultTableModel model = new DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -305,15 +351,17 @@ public class Principal extends javax.swing.JFrame {
                 "ID", "Fecha Accidente", "Ubicacion", "Legajo Empleado", "Motivo", "Tipo Accidente", "IzDer"
             }
         );
-        jTable2.setModel(model);
-        jTable2.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
-           jTable2.setFillsViewportHeight(true); 
+        jTable1.setModel(model);
+        jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
+           jTable1.setFillsViewportHeight(true); 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(800, 400)); 
 
 
-
+*/
         
          jButton4.setText("Agregar");
+         
+         /*
          jButton4.addActionListener(e -> {
            // Definir las columnas que se mostrar√°n en el formulario agregar
            List<String> columnasEmpleado = List.of("ID", "Fecha Accidente", "Ubicacion","Legajo Empleado", "Mootivo", "Tipo Accidente", "IzqDer");
@@ -326,6 +374,7 @@ public class Principal extends javax.swing.JFrame {
             );
             formulario.setVisible(true);
           });
+*/
 
         jButton5.setText("Modificar");
 
@@ -336,6 +385,30 @@ public class Principal extends javax.swing.JFrame {
         
         revalidate();
         repaint();
+
+    }
+    
+    
+    private void cargarAccidentes(List<AccidenteDTO> empleados) {
+        GrillaAccidentes model = new GrillaAccidentes();
+        jTable1.setModel(model);
+        model.setRowCount(0);
+        model.setDatos(new ArrayList<>(empleados));
+
+        // for(Empleado empleado : empleados){
+        // model.addRow(new Object[]{empleado.getLegajo(),
+        // empleado.getApellido_nombre()});
+        // }
+    }
+
+    public void actualizarTabla() {
+        List<AccidenteDTO> accidente = accidenteController.extraerTodo();
+        // MOstrar en tabla
+        if (accidente != null && !accidente.isEmpty()) {
+            cargarAccidentes(accidente);
+        } else {
+            System.out.println("No hay empleados");
+        }
 
     }
 }

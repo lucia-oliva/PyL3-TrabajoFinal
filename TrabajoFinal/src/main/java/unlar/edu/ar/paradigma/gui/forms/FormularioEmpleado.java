@@ -172,7 +172,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         // Llamar al método del controlador para obtener el empleado por legajo
         Empleado empleado = empleadoController.extraer(legajo);
         if (empleado != null) {
-            // Crear el formulario de modificación y pasarle el empleado
+            // Crear el formulario de modificacin y pasarle el empleado
             AbmModEmpleado modificarEmpleadoForm = new AbmModEmpleado(empleado,this);
             modificarEmpleadoForm.setVisible(true);
              actualizarTabla();
