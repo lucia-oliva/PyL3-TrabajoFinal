@@ -16,16 +16,16 @@ import unlar.edu.ar.paradigma.objetos.Empleado;
  *
  * @author lucia
  */
-public class AbmModEmpleado extends javax.swing.JFrame {
+public class ModEmpleado extends javax.swing.JFrame {
 
     /**
-     * Creates new form AbmModEmpleado
+     * Creates new form ModEmpleado
      */
     private Empleado empleado;
     private EmpleadoController empleadoController;
      private FormularioEmpleado formularioEmpleado;
      
-    public AbmModEmpleado(Empleado empleado,FormularioEmpleado formularioEmpleado) {
+    public ModEmpleado(Empleado empleado,FormularioEmpleado formularioEmpleado) {
           this.formularioEmpleado = formularioEmpleado;
         initComponents();
           empleadoController = new EmpleadoController();
@@ -184,21 +184,22 @@ public class AbmModEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbmModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbmModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbmModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbmModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-              //  new AbmModEmpleado(empleado).setVisible(true);
+              //  new ModEmpleado(empleado).setVisible(true);
             }
         });
     }

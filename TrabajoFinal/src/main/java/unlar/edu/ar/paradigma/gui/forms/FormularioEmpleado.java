@@ -4,7 +4,7 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
-import unlar.edu.ar.paradigma.gui.forms.abm.AmbEmpleado;
+import unlar.edu.ar.paradigma.gui.forms.abm.AddEmpleado;
 import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.EmpleadoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
-import unlar.edu.ar.paradigma.gui.forms.abm.AbmModEmpleado;
+import unlar.edu.ar.paradigma.gui.forms.abm.ModEmpleado;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaEmpleado;
 import unlar.edu.ar.paradigma.objetos.Empleado;
 
@@ -173,7 +173,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         Empleado empleado = empleadoController.extraer(legajo);
         if (empleado != null) {
             // Crear el formulario de modificacin y pasarle el empleado
-            AbmModEmpleado modificarEmpleadoForm = new AbmModEmpleado(empleado,this);
+            ModEmpleado modificarEmpleadoForm = new ModEmpleado(empleado,this);
             modificarEmpleadoForm.setVisible(true);
              actualizarTabla();
         } else {
@@ -185,7 +185,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        AmbEmpleado registrarEmpleadoForm = new AmbEmpleado(this);
+        AddEmpleado registrarEmpleadoForm = new AddEmpleado(this);
         registrarEmpleadoForm.setVisible(true);
     }// GEN-LAST:event_jButton1ActionPerformed
 
