@@ -4,6 +4,10 @@ public class ParteCuerpo {
 
     private Integer codigo;
     private String parte;
+    
+    public ParteCuerpo() {
+        
+    }
 
     public ParteCuerpo(Integer codigo, String parte) {
         this.codigo = codigo;

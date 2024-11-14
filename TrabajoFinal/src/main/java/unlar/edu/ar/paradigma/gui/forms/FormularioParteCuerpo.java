@@ -5,15 +5,29 @@
 package unlar.edu.ar.paradigma.gui.forms;
 
 import java.awt.Frame;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import unlar.edu.ar.paradigma.controladores.ParteCuerpoController;
+import unlar.edu.ar.paradigma.controladores.SetConexion;
+import unlar.edu.ar.paradigma.gui.forms.abm.AddParteCuerpo;
+import unlar.edu.ar.paradigma.gui.forms.abm.ModParteCuerpo;
+
+import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaParteCuerpo;
+
+import unlar.edu.ar.paradigma.objetos.ParteCuerpo;
 
 /**
  *
  * @author lucia
  */
 public class FormularioParteCuerpo extends javax.swing.JPanel {
+    
+    private ParteCuerpoController parteCuerpoController;
 
     /**
      * Creates new form ParteCuerpo
@@ -21,6 +35,17 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
     public FormularioParteCuerpo() {
         initComponents();
         initCustomComponents();
+        
+        parteCuerpoController = new ParteCuerpoController();
+        try {
+            Connection connection = SetConexion.getConnection();
+            parteCuerpoController.setConexion(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        actualizarTabla();
+        
+        
     }
 
     /**
@@ -44,12 +69,32 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,6 +129,71 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.getWindowAncestor(this).dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        AddParteCuerpo registrarParteCuerpo = new AddParteCuerpo(this);
+        registrarParteCuerpo.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+             // TODO add your handling code here:
+         // Obtener la fila seleccionada
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow >= 0) {
+        // Obtener el legajo del empleado seleccionado
+        Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
+        // Llamar al método del controlador para obtener el empleado por legajo
+        ParteCuerpo parteCuerpo = parteCuerpoController.extraer(codigo);
+        if (parteCuerpo != null) {
+            // Crear el formulario de modificacin y pasarle el empleado
+            ModParteCuerpo modificarParteCuerpoForm = new ModParteCuerpo(parteCuerpo,this);
+            modificarParteCuerpoForm.setVisible(true);
+             actualizarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "Parte Cuerpo no se ha encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Selecciona un Parte Cuerpo", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow >= 0) {
+        // Obtener el c�digo del motivo desde la tabla
+        Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
+        
+        // Confirmar la eliminaci�n
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "�Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
+                "Confirmar eliminaci�n", JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Llamar al m�todo en MotivoController para eliminar el motivo
+            ParteCuerpo parteCuerpo = parteCuerpoController.extraer(codigo);
+            if (parteCuerpo != null) {
+                boolean eliminado = parteCuerpoController.eliminar(parteCuerpo);
+                if (eliminado) {
+                    JOptionPane.showMessageDialog(this, "Motivo eliminado con exito", "exito", JOptionPane.INFORMATION_MESSAGE);
+                    actualizarTabla(); // Actualizar la tabla para reflejar los cambios
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el motivo", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione un motivo para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaParteCuerpo grillaParteCuerpo;
@@ -95,7 +205,27 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
+    public void actualizarTabla() {
+        List<ParteCuerpo> parteCuerpo = parteCuerpoController.extraerTodo();
+        if (parteCuerpo != null && !parteCuerpo.isEmpty()) {
+            cargarParteCuerpo(parteCuerpo);
+        } else {
+            System.out.println("No hay motivos para mostrar");
+        }
+    }
+    
+        private void cargarParteCuerpo(List<ParteCuerpo> tipoAccidente) {
+        GrillaParteCuerpo model = new GrillaParteCuerpo();
+        jTable1.setModel(model);
+        model.setRowCount(0);
+        model.setDatos(new ArrayList<>(tipoAccidente));
+    }
+    
+    
+    
     private void initCustomComponents() {
+        
+        /*
         DefaultTableModel model = new DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -110,8 +240,10 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         jTable1.setModel(model);
         jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
-
+*/
          jButton1.setText("Agregar");
+         
+         /*
            jButton1.addActionListener(e -> {
            // Definir las columnas que se mostrarán en el formulario agregar
            List<String> ParteCuerpo = List.of("Codigo", "Tipo");
@@ -137,7 +269,7 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
             );
             formulario.setVisible(true);
           });
-
+*/
 
         jButton2.setText("Modificar");
 
@@ -150,4 +282,8 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         revalidate();
         repaint();
     }
+    
+    
+    
+    
 }
