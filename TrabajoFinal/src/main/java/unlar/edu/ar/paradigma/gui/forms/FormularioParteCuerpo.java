@@ -4,14 +4,12 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
-import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.ParteCuerpoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddParteCuerpo;
@@ -145,12 +143,12 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
          // Obtener la fila seleccionada
     int selectedRow = jTable1.getSelectedRow();
     if (selectedRow >= 0) {
-        // Obtener el legajo del empleado seleccionado
+        // Obtener el codigo del Parte cuerpo seleccionado
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
-        // Llamar al método del controlador para obtener el empleado por legajo
+        // Llamar al método del controlador para obtener el parte cuerpo por codigo
         ParteCuerpo parteCuerpo = parteCuerpoController.extraer(codigo);
         if (parteCuerpo != null) {
-            // Crear el formulario de modificacin y pasarle el empleado
+            // Crear el formulario de modificacin y pasarle parte cuerpo
             ModParteCuerpo modificarParteCuerpoForm = new ModParteCuerpo(parteCuerpo,this);
             modificarParteCuerpoForm.setVisible(true);
              actualizarTabla();
@@ -168,16 +166,16 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
     
     if (selectedRow >= 0) {
-        // Obtener el c�digo del motivo desde la tabla
+        // Obtener el codigo del motivo desde la tabla
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
         
-        // Confirmar la eliminaci�n
+        // Confirmar la eliminacion
         int confirm = JOptionPane.showConfirmDialog(this,
                 "¿Estas seguro de que deseas eliminar el parte cuerpo con codigo " + codigo + "?",
                 "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
-            // Llamar al m�todo en MotivoController para eliminar el motivo
+            // Llamar al metodo en partecuerpo controller para eliminar el parte cuerpo
             ParteCuerpo parteCuerpo = parteCuerpoController.extraer(codigo);
             if (parteCuerpo != null) {
                 boolean eliminado = parteCuerpoController.eliminar(parteCuerpo);
@@ -224,53 +222,9 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
     
     
     private void initCustomComponents() {
-        
-        /*
-        DefaultTableModel model = new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Codigo", "Parte"
-            }
-        );
-        jTable1.setModel(model);
-        jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400)); 
-*/
+   
          jButton1.setText("Agregar");
          
-         /*
-           jButton1.addActionListener(e -> {
-           // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> ParteCuerpo = List.of("Codigo", "Tipo");
-            
-// Crear y mostrar el formulario de agregar
-            GenericFormAgregar formulario = new GenericFormAgregar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                ParteCuerpo
-            );
-            formulario.setVisible(true);
-          });
-           
-             jButton1.addActionListener(e -> {
-           // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> ParteCuerpo = List.of("Codigo", "Tipo");
-            
-// Crear y mostrar el formulario de agregar
-            GenericFormAgregar formulario = new GenericFormAgregar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                ParteCuerpo
-            );
-            formulario.setVisible(true);
-          });
-*/
-
         jButton2.setText("Modificar");
 
         jButton3.setText("Eliminar");

@@ -28,7 +28,7 @@ public class ModTipoAccidente extends javax.swing.JFrame {
      private FormularioTipoAccidente formularioTipoAccidente;
 
     /**
-     * Creates new form MMotivo
+     * Creates new form ModTipoAccidente
      */
     public ModTipoAccidente(TipoAccidente tipoAccidente,FormularioTipoAccidente formularioTipoAccidente) {
         this.formularioTipoAccidente = formularioTipoAccidente;

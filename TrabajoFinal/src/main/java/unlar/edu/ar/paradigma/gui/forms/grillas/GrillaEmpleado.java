@@ -1,7 +1,6 @@
 package unlar.edu.ar.paradigma.gui.forms.grillas;
 
 import java.util.ArrayList;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.objetos.Empleado;
 

@@ -5,17 +5,12 @@
 package unlar.edu.ar.paradigma.gui.forms;
 
 import unlar.edu.ar.paradigma.gui.forms.abm.AddEmpleado;
-import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.EmpleadoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.abm.ModEmpleado;
@@ -201,37 +196,8 @@ public class FormularioEmpleado extends javax.swing.JPanel {
 
     private void initCustomComponents() {
 
-        // DefaultTableModel model = new DefaultTableModel(
-        // new Object [][] {
-        // {null, null, null, null},
-        // {null, null, null, null},
-        // {null, null, null, null},
-        // {null, null, null, null}
-        // },
-        // new String [] {
-        // "ID-Legajo", "Apellido-Nombre"
-        // }
-        // );
-        // jTable1.setModel(model);
-        // jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
-        // ScrollPane1.setPreferredSize(new java.awt.Dimension(800, 400));
 
         jButton1.setText("Agregar");
-
-        // jButton1.addActionListener(e -> {
-        // Definir las columnas que se mostrarán en el formulario agregar
-        /// List<String> columnasEmpleado = List.of("ID-Legajo", "Apellido-Nombre");
-
-        // Crear y mostrar el formulario de agregar
-        // GenericFormAgregar formulario = new GenericFormAgregar(
-        // (Frame) SwingUtilities.getWindowAncestor(this),
-        // true,
-        // columnasEmpleado
-        // );
-        // formulario.setVisible(true);
-        // });
-
-      
 
         jButton2.setText("Modificar");
 
@@ -250,10 +216,6 @@ public class FormularioEmpleado extends javax.swing.JPanel {
         model.setRowCount(0);
         model.setDatos(new ArrayList<>(empleados));
 
-        // for(Empleado empleado : empleados){
-        // model.addRow(new Object[]{empleado.getLegajo(),
-        // empleado.getApellido_nombre()});
-        // }
     }
 
     public void actualizarTabla() {

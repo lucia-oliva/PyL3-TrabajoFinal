@@ -1,20 +1,17 @@
 package unlar.edu.ar.paradigma.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.AccidenteController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;
 import unlar.edu.ar.paradigma.gui.forms.FormularioMotivo;
 import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
 import unlar.edu.ar.paradigma.gui.forms.FormularioZonaCuerpo;
-import unlar.edu.ar.paradigma.gui.forms.GenericFormAgregar;
 import unlar.edu.ar.paradigma.gui.forms.FormularioParteCuerpo;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddAccidente;
 import unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes;
@@ -60,8 +57,10 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         grillaAccidentes = new unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -91,6 +90,57 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(80, 80, 80)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(81, 81, 81)))
+        );
+
         jmenuOpciones.setText("Opciones");
 
         jmiABMAccidentes.setText("AMB Accidentes");
@@ -112,31 +162,13 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -225,6 +257,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenu jmenuOpciones;
@@ -348,53 +382,26 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-   //Modificando la tabla y botones
+
 
     private void initCustomComponents() {
-        
-        /*
-        DefaultTableModel model = new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Fecha Accidente", "Ubicacion", "Legajo Empleado", "Motivo", "Tipo Accidente", "IzDer"
-            }
-        );
-        jTable1.setModel(model);
-        jTable1.setPreferredScrollableViewportSize(new java.awt.Dimension(800, 400));
-           jTable1.setFillsViewportHeight(true); 
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(800, 400)); 
-
-
-*/
-        
+       
          jButton4.setText("Agregar");
          
-         /*
-         jButton4.addActionListener(e -> {
-           // Definir las columnas que se mostrarán en el formulario agregar
-           List<String> columnasEmpleado = List.of("ID", "Fecha Accidente", "Ubicacion","Legajo Empleado", "Mootivo", "Tipo Accidente", "IzqDer");
-            
-// Crear y mostrar el formulario de agregar
-            GenericFormAgregar formulario = new GenericFormAgregar(
-                (Frame) SwingUtilities.getWindowAncestor(this), 
-                true, 
-                columnasEmpleado
-            );
-            formulario.setVisible(true);
-          });
-*/
-
         jButton5.setText("Modificar");
 
         jButton6.setText("Eliminar");
         
-        setLayout(new BorderLayout()); 
-        add(jScrollPane2, BorderLayout.CENTER);
+       // Corregir vista de accidentes
+        jPanel1.removeAll();
+        jPanel1.setLayout(new BorderLayout());
+        JScrollPane scrollPane = new JScrollPane(jTable1);
+        jPanel1.add(scrollPane, BorderLayout.CENTER);
+        
+        setLayout(new BorderLayout());
+        add(jPanel1, BorderLayout.CENTER);
+        add(jPanel2, BorderLayout.SOUTH);
+        
         
         revalidate();
         repaint();
@@ -408,10 +415,6 @@ public class Principal extends javax.swing.JFrame {
         model.setRowCount(0);
         model.setDatos(new ArrayList<>(accidentes));
 
-        // for(Empleado empleado : empleados){
-        // model.addRow(new Object[]{empleado.getLegajo(),
-        // empleado.getApellido_nombre()});
-        // }
     }
 
     public void actualizarTabla() {

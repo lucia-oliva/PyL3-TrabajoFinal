@@ -16,7 +16,7 @@ public class ModZonaCuerpo extends javax.swing.JFrame {
      private FormularioZonaCuerpo formularioZonaCuerpo;
 
     /**
-     * Creates new form MMotivo
+     * Creates new form ModZonaCuerpo
      */
     public ModZonaCuerpo(ZonaCuerpo zonaCuerpo,FormularioZonaCuerpo formularioZonaCuerpo) {
         this.formularioZonaCuerpo = formularioZonaCuerpo;
