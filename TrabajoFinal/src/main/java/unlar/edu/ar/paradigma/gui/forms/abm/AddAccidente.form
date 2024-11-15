@@ -29,17 +29,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jlTipoAccidente" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlParteCuerpo" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jbAgregar" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlZonaCuerpo" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jbAceptar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jlZonaCuerpo" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlParteCuerpo" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jcbParteCuerpo" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbTipoAccidente" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbZonaCuerpo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbParteCuerpo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -90,19 +91,19 @@
                   <Component id="jcbTipoAccidente" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlParteCuerpo" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbParteCuerpo" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlZonaCuerpo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbZonaCuerpo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlZonaCuerpo" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbZonaCuerpo" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlParteCuerpo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbParteCuerpo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -115,12 +116,12 @@
         <Property name="text" type="java.lang.String" value="Empleado:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jbAgregar">
+    <Component class="javax.swing.JButton" name="jbAceptar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Agregar"/>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAgregarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbCancelar">
@@ -223,6 +224,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbParteCuerpoActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -238,6 +242,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbZonaCuerpoActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

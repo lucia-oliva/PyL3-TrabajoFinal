@@ -308,36 +308,7 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
         }
         return idParteCuerpo;
     }
-    
-    public int obtenerIdZonaCuerpo(String zonaCuerpo) {
-        int idZonaCuerpo = -1; // Valor por defecto si no se encuentra
-        int zonaCuerpoInt = -1;
-    
-        // Mapear la cadena "Izquierda" a un valor numérico (1), "Derecha" a (2), etc.
-        if ("Izquierda".equalsIgnoreCase(zonaCuerpo)) {
-            zonaCuerpoInt = 1;
-        } else if ("Derecha".equalsIgnoreCase(zonaCuerpo)) {
-            zonaCuerpoInt = 2;
-        } else {
-            // Manejar otros casos si es necesario
-            System.err.println("Valor no válido para zona de cuerpo: " + zonaCuerpo);
-            return idZonaCuerpo;
-        }
-    
-        String query = "SELECT id_zona FROM ZonaCuerpo WHERE izqder = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, zonaCuerpoInt);
-    
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                idZonaCuerpo = rs.getInt("id_zona");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error al obtener el ID de la zona de cuerpo: " + e.getMessage());
-        }
-        return idZonaCuerpo;
-    }
-    
+        
 
     public int obtenerNuevaId() {
         int nuevoNumero = -1; // Valor por defecto si no se encuentra un valor válido
@@ -375,7 +346,6 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
         return tiposAccidente;
     }
     
-    // Método para obtener el ID de un tipo de accidente a partir de su nombre
     public int obtenerIdTipoAccidente(String tipoAccidente) {
         int idTipoAccidente = -1; // Valor por defecto si no se encuentra
         String query = "SELECT ta.codigo FROM tipoaccidente ta WHERE ta.tipo = ?";
@@ -393,5 +363,70 @@ public class AccidenteController implements IABMController<Integer, AccidenteDTO
         
         return idTipoAccidente;
     }
+
+    public List<String> obtenerPartesCuerpoPorZona(String zonaCuerpo) {
+        List<String> partesCuerpo = new ArrayList<>();
+        
+        // Determinar el valor de izquierdaDerecha según la zona del cuerpo
+        int izquierdaDerecha = "Izquierda".equalsIgnoreCase(zonaCuerpo) ? 0 : 
+                               "Derecha".equalsIgnoreCase(zonaCuerpo) ? 1 : -1;
+    
+        // Validar el valor
+        if (izquierdaDerecha == -1) {
+            System.err.println("Zona del cuerpo no válida: " + zonaCuerpo);
+            return partesCuerpo; // Retornar lista vacía si el valor no es válido
+        }
+    
+        // Consulta SQL para obtener las partes del cuerpo correspondientes a la zona
+        String query = "SELECT DISTINCT pc.parte FROM ParteCuerpo pc " +
+                       "INNER JOIN ZonaCuerpo zc ON zc.codigo = pc.codigo " +
+                       "WHERE zc.izqder = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, izquierdaDerecha); // Pasar el valor calculado
+            ResultSet rs = statement.executeQuery();
+            
+            while (rs.next()) {
+                partesCuerpo.add(rs.getString("parte"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener partes del cuerpo para la zona: " + e.getMessage());
+        }
+    
+        return partesCuerpo;
+    }
+
+    public int obtenerIdZonaCuerpo(String parteCuerpo, int zonaCuerpo) {
+        int idZonaCuerpo = -1; // Valor por defecto si no se encuentra
+        
+        // Verificar si los parámetros recibidos son válidos
+        if (parteCuerpo == null || parteCuerpo.isEmpty()) {
+            System.err.println("Parte de cuerpo inválida: " + parteCuerpo);
+            return idZonaCuerpo;
+        }
+        
+        // Realizar la consulta para obtener el id_zona usando parteCuerpo y zonaCuerpo
+        String query = "SELECT zc.id_zona " +
+                       "FROM ZonaCuerpo zc " +
+                       "INNER JOIN ParteCuerpo pc ON zc.codigo = pc.codigo " +
+                       "WHERE pc.parte = ? AND zc.izqder = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, parteCuerpo);  // La parte del cuerpo (e.g., "Pierna")
+            statement.setInt(2, zonaCuerpo);      // Izquierda (0) o Derecha (1)
+            
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                idZonaCuerpo = rs.getInt("id_zona");
+            } else {
+                System.err.println("No se encontró la zona de cuerpo para la parte: " + parteCuerpo + " y zona: " + zonaCuerpo);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el ID de la zona de cuerpo: " + e.getMessage());
+        }
+        
+        return idZonaCuerpo;
+    }
+
     
 }

@@ -54,7 +54,7 @@ public class AddAccidente extends javax.swing.JFrame {
     private void initComponents() {
 
         jlEmpleado = new javax.swing.JLabel();
-        jbAgregar = new javax.swing.JButton();
+        jbAceptar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jtfUbicacion = new javax.swing.JTextField();
         jlUbicacion = new javax.swing.JLabel();
@@ -72,10 +72,10 @@ public class AddAccidente extends javax.swing.JFrame {
 
         jlEmpleado.setText("Empleado:");
 
-        jbAgregar.setText("Agregar");
-        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+        jbAceptar.setText("Aceptar");
+        jbAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAgregarActionPerformed(evt);
+                jbAceptarActionPerformed(evt);
             }
         });
 
@@ -119,8 +119,18 @@ public class AddAccidente extends javax.swing.JFrame {
         });
 
         jcbParteCuerpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbParteCuerpo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbParteCuerpoActionPerformed(evt);
+            }
+        });
 
         jcbZonaCuerpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbZonaCuerpo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbZonaCuerpoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,15 +142,16 @@ public class AddAccidente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlTipoAccidente)
-                            .addComponent(jlParteCuerpo)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jbAgregar)
-                                .addComponent(jlZonaCuerpo)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbAceptar)
+                                .addGap(17, 17, 17))
+                            .addComponent(jlZonaCuerpo)
+                            .addComponent(jlParteCuerpo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcbTipoAccidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbZonaCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcbZonaCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -178,54 +189,55 @@ public class AddAccidente extends javax.swing.JFrame {
                     .addComponent(jlTipoAccidente)
                     .addComponent(jcbTipoAccidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlParteCuerpo)
-                    .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlZonaCuerpo)
                     .addComponent(jcbZonaCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlParteCuerpo)
+                    .addComponent(jcbParteCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelar)
-                    .addComponent(jbAgregar))
+                    .addComponent(jbAceptar))
                 .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+    private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         // Obtener datos seleccionados de los comboBoxes
         int numero = accidenteController.obtenerNuevaId();
-        String empleadoSeleccionado = jcbEmpleado.getSelectedItem().toString();
-        String motivoSeleccionado = jcbMotivo.getSelectedItem().toString();
-        String parteCuerpoSeleccionada = jcbParteCuerpo.getSelectedItem().toString();
-        String zonaCuerpoSeleccionada = jcbZonaCuerpo.getSelectedItem().toString();
+        String empleado = jcbEmpleado.getSelectedItem().toString();
+        String motivo = jcbMotivo.getSelectedItem().toString();
+        String parteCuerpo = jcbParteCuerpo.getSelectedItem().toString();
+        String zonaCuerpoSelect = jcbZonaCuerpo.getSelectedItem().toString();
         String ubicacion = jtfUbicacion.getText();
         String tipoAccidente = jcbTipoAccidente.getSelectedItem().toString();
+        
+        int zonaCuerpo = "Izquierda".equals(zonaCuerpoSelect) ? 0 : 1;
 
         // Obtener IDs según lo que esté seleccionado (asumiendo que hay métodos para obtenerlos)
-        int idEmpleado = accidenteController.obtenerIdEmpleado(empleadoSeleccionado);
-        int idMotivo = accidenteController.obtenerIdMotivo(motivoSeleccionado);
-        int idTipoAccidente = accidenteController.obtenerIdTipoAccidente(tipoAccidente);
-        int idZonaCuerpo = accidenteController.obtenerIdZonaCuerpo(zonaCuerpoSeleccionada);
-        int idParteCuerpo = accidenteController.obtenerIdParteCuerpo(parteCuerpoSeleccionada);
+        int legajo = accidenteController.obtenerIdEmpleado(empleado);
+        int codigo_motivo = accidenteController.obtenerIdMotivo(motivo);
+        int codigo_tipo_accidente = accidenteController.obtenerIdTipoAccidente(tipoAccidente);
+        int id_zona = accidenteController.obtenerIdZonaCuerpo(parteCuerpo, zonaCuerpo);
+        int codigo = accidenteController.obtenerIdParteCuerpo(parteCuerpo);
         
         
 
         // Crear objeto Accidente
         AccidenteDTO accidenteDTO = new AccidenteDTO();
         accidenteDTO.setNumero(numero);
-        accidenteDTO.setLegajo(idEmpleado);
-        accidenteDTO.setCodigo_motivo(idMotivo);
-        accidenteDTO.setCodigo_tipo_accidente(idTipoAccidente); // Usar el ID obtenido para el tipo de accidente
-        accidenteDTO.setId_zona(idZonaCuerpo);
-        accidenteDTO.setCodigo(idParteCuerpo);
+        accidenteDTO.setLegajo(legajo);
+        accidenteDTO.setCodigo_motivo(codigo_motivo);
+        accidenteDTO.setCodigo_tipo_accidente(codigo_tipo_accidente);
+        accidenteDTO.setId_zona(id_zona);
+        accidenteDTO.setCodigo(codigo);
         accidenteDTO.setUbicacion(ubicacion);
         accidenteDTO.setFecha_del_accidente(new java.sql.Date(new java.util.Date().getTime()));
 
-        // Llamar al controlador para insertar el accidente
         if (accidenteController.crear(accidenteDTO)) {
             System.out.println("Accidente agregado correctamente.");
             principal.actualizarTabla();
@@ -235,7 +247,7 @@ public class AddAccidente extends javax.swing.JFrame {
 
         // Cerrar el formulario
         this.dispose();
-    }//GEN-LAST:event_jbAgregarActionPerformed
+    }//GEN-LAST:event_jbAceptarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
@@ -255,48 +267,77 @@ public class AddAccidente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbTipoAccidenteActionPerformed
 
+    private void jcbZonaCuerpoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbZonaCuerpoActionPerformed
+        // Obtener la opción seleccionada de jcbZonaCuerpo
+        String zonaSeleccionada = (String) jcbZonaCuerpo.getSelectedItem();
+
+        // Validar que no sea nulo o vacío
+        if (zonaSeleccionada != null && !zonaSeleccionada.isEmpty()) {
+            // Limpiar todas las opciones previas de jcbParteCuerpo
+            jcbParteCuerpo.removeAllItems();
+
+            // Obtener las partes del cuerpo según la zona desde AccidenteController
+            List<String> partesCuerpo = accidenteController.obtenerPartesCuerpoPorZona(zonaSeleccionada);
+
+            // Llenar jcbParteCuerpo con las nuevas opciones
+            for (String parte : partesCuerpo) {
+                jcbParteCuerpo.addItem(parte);
+            }
+
+            // Verificar si la lista está vacía
+            if (partesCuerpo.isEmpty()) {
+                System.err.println("No se encontraron partes del cuerpo para la zona: " + zonaSeleccionada);
+            }
+        }
+    }//GEN-LAST:event_jcbZonaCuerpoActionPerformed
+
+    private void jcbParteCuerpoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbParteCuerpoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbParteCuerpoActionPerformed
+
     private void llenarComboBoxes() {
-        // Llenar ComboBox de Empleados
-        List<String> empleados = accidenteController.obtenerEmpleados();
-        DefaultComboBoxModel<String> modeloEmpleados = new DefaultComboBoxModel<>();
-        for (String empleado : empleados) {
-            modeloEmpleados.addElement(empleado);
-        }
-        jcbEmpleado.setModel(modeloEmpleados);
+        try {
+            // Llenar ComboBox de Empleados
+            List<String> empleados = accidenteController.obtenerEmpleados();
+            DefaultComboBoxModel<String> modeloEmpleados = new DefaultComboBoxModel<>();
+            for (String empleado : empleados) {
+                modeloEmpleados.addElement(empleado);
+            }
+            jcbEmpleado.setModel(modeloEmpleados);
 
-        // Llenar ComboBox de Motivos
-        List<String> motivos = accidenteController.obtenerMotivos();
-        DefaultComboBoxModel<String> modeloMotivos = new DefaultComboBoxModel<>();
-        for (String motivo : motivos) {
-            modeloMotivos.addElement(motivo);
-        }
-        jcbMotivo.setModel(modeloMotivos);
+            // Llenar ComboBox de Motivos
+            List<String> motivos = accidenteController.obtenerMotivos();
+            DefaultComboBoxModel<String> modeloMotivos = new DefaultComboBoxModel<>();
+            for (String motivo : motivos) {
+                modeloMotivos.addElement(motivo);
+            }
+            jcbMotivo.setModel(modeloMotivos);
 
-        // Llenar ComboBox de Partes del Cuerpo
-        List<String> partesCuerpo = accidenteController.obtenerPartesCuerpo();
-        DefaultComboBoxModel<String> modeloPartesCuerpo = new DefaultComboBoxModel<>();
-        for (String parteCuerpo : partesCuerpo) {
-            modeloPartesCuerpo.addElement(parteCuerpo);
-        }
-        jcbParteCuerpo.setModel(modeloPartesCuerpo);
+            // Llenar ComboBox de Tipos de Accidente
+            List<String> tiposAccidente = accidenteController.obtenerTiposAccidente();
+            DefaultComboBoxModel<String> modeloTiposAccidente = new DefaultComboBoxModel<>();
+            for (String tipo : tiposAccidente) {
+                modeloTiposAccidente.addElement(tipo);
+            }
+            jcbTipoAccidente.setModel(modeloTiposAccidente);
 
-        // Llenar ComboBox de Zona del Cuerpo
-        String[] opcionesZonaCuerpo = {"Izquierda", "Derecha"};
-        DefaultComboBoxModel<String> modeloZonaCuerpo = new DefaultComboBoxModel<>(opcionesZonaCuerpo);
-        jcbZonaCuerpo.setModel(modeloZonaCuerpo);
+            // Llenar ComboBox de Partes del Cuerpo
+            List<String> partesCuerpo = accidenteController.obtenerPartesCuerpo();
+            DefaultComboBoxModel<String> modeloPartesCuerpo = new DefaultComboBoxModel<>();
+            for (String parte : partesCuerpo) {
+                modeloPartesCuerpo.addElement(parte);
+            }
+            jcbParteCuerpo.setModel(modeloPartesCuerpo);
 
-        // Llenar ComboBox de Tipo de Accidente (supongo que esto lo llenas de una lista de tipos de accidente)
-        List<String> tiposAccidente = accidenteController.obtenerTiposAccidente();
-        DefaultComboBoxModel<String> modeloTiposAccidente = new DefaultComboBoxModel<>();
-        for (String tipo : tiposAccidente) {
-            modeloTiposAccidente.addElement(tipo);
+            // Llenar ComboBox de Zonas del Cuerpo (valores predefinidos)
+            String[] opcionesZonaCuerpo = {"Izquierda", "Derecha"};
+            DefaultComboBoxModel<String> modeloZonaCuerpo = new DefaultComboBoxModel<>(opcionesZonaCuerpo);
+            jcbZonaCuerpo.setModel(modeloZonaCuerpo);
+
+        } catch (Exception e) {
+            System.err.println("Error al llenar los comboBoxes: " + e.getMessage());
         }
-        jcbTipoAccidente.setModel(modeloTiposAccidente);
     }
-
-    // Llenar ComboBox de Zona del Cuerpo (dependiendo de tu lógica, puede ser necesario otro método)
-    // Ejemplo: jcbZonaCuerpo.addItem("Zona 1");
-
     
     /**
      * @param args the command line arguments
@@ -342,7 +383,7 @@ public class AddAccidente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbAgregar;
+    private javax.swing.JButton jbAceptar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JComboBox<String> jcbEmpleado;
     private javax.swing.JComboBox<String> jcbMotivo;
