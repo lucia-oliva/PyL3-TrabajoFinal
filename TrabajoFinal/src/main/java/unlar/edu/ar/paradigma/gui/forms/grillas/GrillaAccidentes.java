@@ -11,7 +11,7 @@ public class GrillaAccidentes extends DefaultTableModel {
     private ArrayList<AccidenteDTO> datos = new ArrayList<>();
     private String[] columnas = { "Numero", "Fecha", "Ubicacion", "Legajo del empleado", "Motivo (id)",
             "Tipo de accidente (ID)",
-            "izquierdo o Derecho" };
+            "id_zona" };
 
     public GrillaAccidentes() {
         this.datos = new ArrayList<>();
