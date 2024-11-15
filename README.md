@@ -62,3 +62,92 @@ CREATE TABLE AccidenteZonaCuerpo (
     CONSTRAINT fk_zona_cuerpo FOREIGN KEY (id_zona) REFERENCES ZonaCuerpo (id_zona)
 );
 ```
+
+# Estructura del proyecto:
+C:.
+│   .gitignore
+│   README.md
+│   
+└───TrabajoFinal
+    │   .env
+    │   .gitignore
+    │   pom.xml
+    │   
+    ├───src
+    │   ├───main
+    │   │   └───java
+    │   │       └───unlar
+    │   │           └───edu
+    │   │               └───ar
+    │   │                   └───paradigma
+    │   │                       │   TrabajoFinal.java
+    │   │                       │   
+    │   │                       ├───controladores
+    │   │                       │       AccidenteController.java
+    │   │                       │       EmpleadoController.java
+    │   │                       │       IABMController.java
+    │   │                       │       MotivoController.java
+    │   │                       │       ParteCuerpoController.java
+    │   │                       │       SetConexion.java
+    │   │                       │       TipoAccidenteController.java
+    │   │                       │       ZonaCuerpoController.java
+    │   │                       │       
+    │   │                       ├───gui
+    │   │                       │   │   Principal.form
+    │   │                       │   │   Principal.java
+    │   │                       │   │   
+    │   │                       │   └───forms
+    │   │                       │       │   FormularioEmpleado.form
+    │   │                       │       │   FormularioEmpleado.java
+    │   │                       │       │   FormularioMotivo.form
+    │   │                       │       │   FormularioMotivo.java
+    │   │                       │       │   FormularioParteCuerpo.form
+    │   │                       │       │   FormularioParteCuerpo.java
+    │   │                       │       │   FormularioTipoAccidente.form
+    │   │                       │       │   FormularioTipoAccidente.java
+    │   │                       │       │   FormularioZonaCuerpo.form
+    │   │                       │       │   FormularioZonaCuerpo.java
+    │   │                       │       │   GenericFormAgregar.form
+    │   │                       │       │   GenericFormAgregar.java
+    │   │                       │       │   GenericFormModificar.form
+    │   │                       │       │   GenericFormModificar.java
+    │   │                       │       │
+    │   │                       │       ├───abm
+    │   │                       │       │       AddAccidente.form
+    │   │                       │       │       AddAccidente.java
+    │   │                       │       │       AddEmpleado.form
+    │   │                       │       │       AddEmpleado.java
+    │   │                       │       │       AddMotivo.form
+    │   │                       │       │       AddMotivo.java
+    │   │                       │       │       AddParteCuerpo.form
+    │   │                       │       │       AddParteCuerpo.java
+    │   │                       │       │       AddTipoAccidente.form
+    │   │                       │       │       AddTipoAccidente.java
+    │   │                       │       │       AddZonaCuerpo.form
+    │   │                       │       │       AddZonaCuerpo.java
+    │   │                       │       │       ModEmpleado.form
+    │   │                       │       │       ModEmpleado.java
+    │   │                       │       │       ModMotivo.form
+    │   │                       │       │       ModMotivo.java
+    │   │                       │       │       ModParteCuerpo.form
+    │   │                       │       │       ModParteCuerpo.java
+    │   │                       │       │       ModTipoAccidente.form
+    │   │                       │       │       ModTipoAccidente.java
+    │   │                       │       │       ModZonaCuerpo.form
+    │   │                       │       │       ModZonaCuerpo.java
+    │   │                       │       │
+    │   │                       │       └───grillas
+    │   │                       │               GrillaAccidentes.java
+    │   │                       │               GrillaEmpleado.java
+    │   │                       │               GrillaMotivo.java
+    │   │                       │               GrillaParteCuerpo.java
+    │   │                       │               GrillaTipoAccidente.java
+    │   │                       │               GrillaZonaCuerpo.java
+    │   │                       │
+    │   │                       └───objetos
+    │   │                               AccidenteDTO.java
+    │   │                               Empleado.java
+    │   │                               Motivo.java
+    │   │                               ParteCuerpo.java
+    │   │                               TipoAccidente.java
+    │   │                               ZonaCuerpo.java
