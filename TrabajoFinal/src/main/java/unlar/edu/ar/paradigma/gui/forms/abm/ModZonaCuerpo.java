@@ -65,6 +65,9 @@ public class ModZonaCuerpo extends javax.swing.JFrame {
 
         jlZonaCuerpo.setText("Zona del cuerpo:");
 
+        jtfId_zona.setEditable(false);
+        jtfId_zona.setEnabled(false);
+
         jtfZonaCuerpo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfZonaCuerpoActionPerformed(evt);
