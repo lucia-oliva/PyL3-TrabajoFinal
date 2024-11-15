@@ -6,7 +6,13 @@ Desarrollada por:
 - Oliva Ana Lucia ELSI842
 - Facundo Ruiz ELSI919
 
-Diagrama DER 
+# Estructura del Proyecto
+- Controllers: Gestiona la lógica de negocio. Controla las interacciones entre los formularios, la grilla y los objetos, como la creación, edición o eliminación de empleados.
+- GUI / Forms: Contiene las interfaces gráficas de usuario, que permiten a los usuarios interactuar con el sistema, como el formulario para agregar o editar empleados.
+- Grillas: Maneja la visualización de los datos en tablas (JTable). La grilla es un modelo de tabla personalizado que muestra la lista de empleados con sus respectivos detalles (Legajo, Apellido y Nombre).
+- Objetos: Define las entidades del sistema.
+
+# Diagrama DER 
 ![Imagen de WhatsApp 2024-11-09 a las 18 43 27_641d46f0](https://github.com/user-attachments/assets/edcfbd7e-5172-4ba8-bd8a-461722897e95)
 
 ```sql
