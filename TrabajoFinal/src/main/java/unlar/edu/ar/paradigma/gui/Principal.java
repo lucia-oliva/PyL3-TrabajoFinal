@@ -62,7 +62,6 @@ public class Principal extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmenuOpciones = new javax.swing.JMenu();
@@ -81,8 +80,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("jButton5");
-
         jButton6.setText("jButton6");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,11 +94,9 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(87, 87, 87)
                 .addComponent(jButton6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +104,6 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
-                    .addComponent(jButton5)
                     .addComponent(jButton6))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -253,7 +247,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private unlar.edu.ar.paradigma.gui.forms.grillas.GrillaAccidentes grillaAccidentes;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -388,8 +381,6 @@ public class Principal extends javax.swing.JFrame {
        
          jButton4.setText("Agregar");
          
-        jButton5.setText("Modificar");
-
         jButton6.setText("Eliminar");
         
        // Corregir vista de accidentes
