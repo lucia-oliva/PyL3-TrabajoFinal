@@ -37,12 +37,6 @@ public class TrabajoFinal {
             List<String> partesDerecha = accidenteController.obtenerPartesCuerpoPorZona("Derecha");
             partesDerecha.forEach(System.out::println);
 
-            /*System.out.println("\nPrueba con una zona inválida:");
-            List<String> partesInvalida = accidenteController.obtenerPartesCuerpoPorZona("Centro");
-            if (partesInvalida.isEmpty()) {
-                System.out.println("No se encontraron partes para la zona inválida.");
-            }*/
-
         } catch (SQLException e) {
             System.err.println("Error al conectar a la base de datos: " + e.getMessage());
         } catch (Exception e) {

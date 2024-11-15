@@ -6,15 +6,9 @@ package unlar.edu.ar.paradigma.gui.forms.abm;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import unlar.edu.ar.paradigma.controladores.EmpleadoController;
 import unlar.edu.ar.paradigma.controladores.ParteCuerpoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
-import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;
 import unlar.edu.ar.paradigma.gui.forms.FormularioParteCuerpo;
-import unlar.edu.ar.paradigma.objetos.Empleado;
 import unlar.edu.ar.paradigma.objetos.ParteCuerpo;
 
 /**
@@ -26,7 +20,6 @@ public class AddParteCuerpo extends javax.swing.JFrame {
     private ParteCuerpoController parteCuerpoController;
     private FormularioParteCuerpo formularioParteCuerpo;
     /** private Connection connection;
-     * Creates new form RegistrarEmpleado
      */
     public AddParteCuerpo(FormularioParteCuerpo formularioParteCuerpo) {
        this.formularioParteCuerpo = formularioParteCuerpo;

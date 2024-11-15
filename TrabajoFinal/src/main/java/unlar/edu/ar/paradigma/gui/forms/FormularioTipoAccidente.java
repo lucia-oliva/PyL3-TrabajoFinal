@@ -4,14 +4,13 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
-import java.awt.Frame;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.controladores.TipoAccidenteController;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddTipoAccidente;
@@ -133,16 +132,15 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        //redirigir a nuevo panel nashe
         
         int selectedRow = jTable1.getSelectedRow();
     if (selectedRow >= 0) {
-        // Obtener el legajo del empleado seleccionado
+        // Obtener el codigo del tipo accidente seleccionado
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
-        // Llamar al metodo del controlador para obtener el empleado por legajo
+        // Llamar al metodo del controlador para obtener el tipo accidente por codigo
         TipoAccidente tipoAccidente = tipoAccidenteController.extraer(codigo);
         if (tipoAccidente != null) {
-            // Crear el formulario de modificación y pasarle el empleado
+            // Crear el formulario de modificación y pasarle el tipo accidente
             ModTipoAccidente modificarTipoAccidente = new ModTipoAccidente(tipoAccidente,this);
             modificarTipoAccidente.setVisible(true);
              actualizarTabla();
@@ -165,16 +163,16 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
     
     if (selectedRow >= 0) {
-        // Obtener el c�digo del motivo desde la tabla
+        // Obtener el codigo del tipo accidente desde la tabla
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
         
-        // Confirmar la eliminaci�n
+        // Confirmar la eliminacion
         int confirm = JOptionPane.showConfirmDialog(this,
                 "¿Estas seguro de que deseas eliminar el tipo accidente con codigo " + codigo + "?",
                 "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
-            // Llamar al m�todo en MotivoController para eliminar el motivo
+            // Llamar al metodo en Tipoaccidente Controller para eliminar el tipo accidente
             TipoAccidente tipoAccidente = tipoAccidenteController.extraer(codigo);
             if (tipoAccidente != null) {
                 boolean eliminado = tipoAccidenteController.eliminar(tipoAccidente);

@@ -25,7 +25,7 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
 
     private ZonaCuerpoController zonaCuerpoController;
     /**
-     * Creates new form FormularioTipoAccidente
+     * Creates new form Formulario zonaCuerpo
      */
     public FormularioZonaCuerpo() {
         initComponents();

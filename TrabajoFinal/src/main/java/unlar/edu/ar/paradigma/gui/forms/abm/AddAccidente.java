@@ -9,12 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import unlar.edu.ar.paradigma.controladores.AccidenteController;
-import unlar.edu.ar.paradigma.controladores.TipoAccidenteController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.Principal;
-import unlar.edu.ar.paradigma.gui.forms.FormularioTipoAccidente;
 import unlar.edu.ar.paradigma.objetos.AccidenteDTO;
-import unlar.edu.ar.paradigma.objetos.TipoAccidente;
 
 
 /**

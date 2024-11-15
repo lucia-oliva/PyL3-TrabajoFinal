@@ -1,7 +1,6 @@
 package unlar.edu.ar.paradigma.gui.forms.grillas;
 
 import java.util.ArrayList;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.objetos.ParteCuerpo;
 
@@ -61,13 +60,13 @@ public class GrillaParteCuerpo extends DefaultTableModel {
             datos.subList(rowCount, datos.size()).clear(); // Elimina filas extras si rowCount es menor
         } else {
             for (int i = datos.size(); i < rowCount; i++) {
-                datos.add(new ParteCuerpo()); // Agrega instancias vacías si rowCount es mayor
+                datos.add(new ParteCuerpo()); // Agrega instancias vacï¿½as si rowCount es mayor
             }
         }
         fireTableDataChanged(); // Actualiza la vista de la tabla
     }
 
-    // Método para obtener un Motivo por su código
+    // Mï¿½todo para obtener un Motivo por su cï¿½digo
     public ParteCuerpo getMotivoByCodigo(int codigo) {
         for (ParteCuerpo parteCuerpo : datos) {
             if (parteCuerpo.getCodigo() == codigo) {

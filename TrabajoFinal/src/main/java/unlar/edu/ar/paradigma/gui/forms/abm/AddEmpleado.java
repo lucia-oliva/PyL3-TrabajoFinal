@@ -6,9 +6,6 @@ package unlar.edu.ar.paradigma.gui.forms.abm;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import unlar.edu.ar.paradigma.controladores.EmpleadoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.FormularioEmpleado;

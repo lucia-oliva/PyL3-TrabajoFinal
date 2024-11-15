@@ -16,7 +16,7 @@ public class ModZonaCuerpo extends javax.swing.JFrame {
      private FormularioZonaCuerpo formularioZonaCuerpo;
 
     /**
-     * Creates new form MMotivo
+     * Creates new form ModZonaCuerpo
      */
     public ModZonaCuerpo(ZonaCuerpo zonaCuerpo,FormularioZonaCuerpo formularioZonaCuerpo) {
         this.formularioZonaCuerpo = formularioZonaCuerpo;
@@ -64,6 +64,9 @@ public class ModZonaCuerpo extends javax.swing.JFrame {
         jlId_zona.setText("ID:");
 
         jlZonaCuerpo.setText("Zona del cuerpo:");
+
+        jtfId_zona.setEditable(false);
+        jtfId_zona.setEnabled(false);
 
         jtfZonaCuerpo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

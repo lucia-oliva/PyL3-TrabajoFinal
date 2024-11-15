@@ -27,7 +27,7 @@ public class AddZonaCuerpo extends javax.swing.JFrame {
     private static final String[] OPCIONES_ZONA_CUERPO = {"Izquierda", "Derecha"};
     
     /**
-     * Creates new form AbMotivo
+     * Creates new form AbmZonaCuerpo
      */
     public AddZonaCuerpo(FormularioZonaCuerpo formularioZonaCuerpo) {
         this.formularioZonaCuerpo = formularioZonaCuerpo;

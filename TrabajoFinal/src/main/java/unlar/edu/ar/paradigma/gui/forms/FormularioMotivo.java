@@ -4,14 +4,12 @@
  */
 package unlar.edu.ar.paradigma.gui.forms;
 
-import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
 import unlar.edu.ar.paradigma.controladores.MotivoController;
 import unlar.edu.ar.paradigma.controladores.SetConexion;
 import unlar.edu.ar.paradigma.gui.forms.abm.AddMotivo;
