@@ -135,7 +135,7 @@ public class FormularioEmpleado extends javax.swing.JPanel {
             Integer legajo = (Integer) jTable1.getValueAt(selectedRow,0);
             //Confirmar la eliminacion
             int confirm = JOptionPane.showConfirmDialog(this,
-                    "¿Estas seguro de que deseas eliminar al empleado con legajo" + legajo + "?", 
+                    "Â¿Estas seguro de que deseas eliminar al empleado con legajo" + legajo + "?", 
                     "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
             if(confirm == JOptionPane.YES_OPTION){
                 //Llamar al metodo en EmpleadoController para eliminar el empleado

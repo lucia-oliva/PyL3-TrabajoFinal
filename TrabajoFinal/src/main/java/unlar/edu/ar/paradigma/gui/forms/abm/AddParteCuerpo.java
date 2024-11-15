@@ -158,10 +158,10 @@ public class AddParteCuerpo extends javax.swing.JFrame {
         parteCuerpo.setParte(txtApNomE.getText());
         
         if (parteCuerpoController.crear(parteCuerpo)) {
-            System.out.println("Empleado creado exitosamente.");
+            System.out.println("Parte cuerpo creado exitosamente.");
             formularioParteCuerpo.actualizarTabla();
         } else {
-            System.out.println("Hubo un error al crear el empleado.");
+            System.out.println("Hubo un error al crear parte cuerpo.");
         }
         
         dispose();

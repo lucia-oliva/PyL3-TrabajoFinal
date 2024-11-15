@@ -161,11 +161,11 @@ public class ModMotivo extends javax.swing.JFrame {
         motivo.setCodigo(Integer.parseInt(jtID.getText()));
         boolean exito = motivoController.modificar(motivo);
         if (exito) {
-            JOptionPane.showMessageDialog(this, "Empleado actualizado con éxito", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Motivo actualizado con éxito", "Exito", JOptionPane.INFORMATION_MESSAGE);
             formularioMotivo.actualizarTabla();
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Error al actualizar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al actualizar el motivo", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

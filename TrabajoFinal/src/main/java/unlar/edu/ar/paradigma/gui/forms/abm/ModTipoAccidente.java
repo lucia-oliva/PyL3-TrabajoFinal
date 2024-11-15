@@ -162,11 +162,11 @@ public class ModTipoAccidente extends javax.swing.JFrame {
         tipoAccidente.setCodigo(Integer.parseInt(jtID.getText()));
         boolean exito = tipoAccidenteController.modificar(tipoAccidente);
         if (exito) {
-            JOptionPane.showMessageDialog(this, "Empleado actualizado con éxito", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Tipo accidente actualizado con éxito", "Exito", JOptionPane.INFORMATION_MESSAGE);
             formularioTipoAccidente.actualizarTabla();
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Error al actualizar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al actualizar tipo accidente", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

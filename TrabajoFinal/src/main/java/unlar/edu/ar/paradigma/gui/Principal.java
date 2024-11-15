@@ -155,7 +155,7 @@ public class Principal extends javax.swing.JFrame {
             Integer numero = (Integer) jTable1.getValueAt(selectedRow,0);
             //Confirmar la eliminacion
             int confirm = JOptionPane.showConfirmDialog(this,
-                    "¿Estas seguro de que deseas eliminar al empleado con legajo" + numero + "?", 
+                    "Â¿Estas seguro de que deseas eliminar al accidente con codigo" + numero + "?", 
                     "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
             if(confirm == JOptionPane.YES_OPTION){
                 //Llamar al metodo en EmpleadoController para eliminar el empleado
@@ -163,14 +163,14 @@ public class Principal extends javax.swing.JFrame {
                 if(accidente != null){
                     boolean eliminado = accidenteController.eliminar(accidente);
                     if(eliminado){
-                        JOptionPane.showMessageDialog(this, "Empleado eliminado con exito","Exito",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Accidente eliminado con exito","Exito",JOptionPane.INFORMATION_MESSAGE);
                         actualizarTabla();
                     }else{
-                        JOptionPane.showMessageDialog(this, "No se encontro el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "No se encontro el accidente", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "Seleccione un empleado", "Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Seleccione un accidente", "Warning",JOptionPane.WARNING_MESSAGE);
             }
         
         }
@@ -402,11 +402,11 @@ public class Principal extends javax.swing.JFrame {
     }
     
     
-    private void cargarAccidentes(List<AccidenteDTO> empleados) {
+    private void cargarAccidentes(List<AccidenteDTO> accidentes) {
         GrillaAccidentes model = new GrillaAccidentes();
         jTable1.setModel(model);
         model.setRowCount(0);
-        model.setDatos(new ArrayList<>(empleados));
+        model.setDatos(new ArrayList<>(accidentes));
 
         // for(Empleado empleado : empleados){
         // model.addRow(new Object[]{empleado.getLegajo(),
@@ -420,7 +420,7 @@ public class Principal extends javax.swing.JFrame {
         if (accidente != null && !accidente.isEmpty()) {
             cargarAccidentes(accidente);
         } else {
-            System.out.println("No hay empleados");
+            System.out.println("No hay accidentes");
         }
 
     }

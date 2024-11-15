@@ -142,16 +142,16 @@ public class FormularioMotivo extends javax.swing.JPanel {
     int selectedRow = jTable1.getSelectedRow();
     
     if (selectedRow >= 0) {
-        // Obtener el código del motivo desde la tabla
+        // Obtener el cï¿½digo del motivo desde la tabla
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
         
-        // Confirmar la eliminación
+        // Confirmar la eliminaciï¿½n
         int confirm = JOptionPane.showConfirmDialog(this,
-                "¿Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
-                "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+                "Â¿Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
+                "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
-            // Llamar al método en MotivoController para eliminar el motivo
+            // Llamar al mï¿½todo en MotivoController para eliminar el motivo
             Motivo motivo = motivoController.extraer(codigo);
             if (motivo != null) {
                 boolean eliminado = motivoController.eliminar(motivo);
@@ -184,10 +184,10 @@ public class FormularioMotivo extends javax.swing.JPanel {
             modificarMotivo.setVisible(true);
              actualizarTabla();
         } else {
-            JOptionPane.showMessageDialog(this, "Empleado no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Motivo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
         }
     } else {
-        JOptionPane.showMessageDialog(this, "Selecciona un empleado", "Warning", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Selecciona un motivo", "Warning", JOptionPane.WARNING_MESSAGE);
     }
     }//GEN-LAST:event_jButton2ActionPerformed
 

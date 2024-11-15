@@ -155,10 +155,10 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
             modificarParteCuerpoForm.setVisible(true);
              actualizarTabla();
         } else {
-            JOptionPane.showMessageDialog(this, "Parte Cuerpo no se ha encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Parte cuerpo no se ha encontrado", "Error", JOptionPane.ERROR_MESSAGE);
         }
     } else {
-        JOptionPane.showMessageDialog(this, "Selecciona un Parte Cuerpo", "Warning", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Selecciona un parte cuerpo", "Warning", JOptionPane.WARNING_MESSAGE);
     }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -173,8 +173,8 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         
         // Confirmar la eliminaci�n
         int confirm = JOptionPane.showConfirmDialog(this,
-                "�Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
-                "Confirmar eliminaci�n", JOptionPane.YES_NO_OPTION);
+                "¿Estas seguro de que deseas eliminar el parte cuerpo con codigo " + codigo + "?",
+                "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
             // Llamar al m�todo en MotivoController para eliminar el motivo
@@ -182,15 +182,15 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
             if (parteCuerpo != null) {
                 boolean eliminado = parteCuerpoController.eliminar(parteCuerpo);
                 if (eliminado) {
-                    JOptionPane.showMessageDialog(this, "Motivo eliminado con exito", "exito", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Parte cuerpo eliminado con exito", "exito", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla(); // Actualizar la tabla para reflejar los cambios
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el motivo", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el parte cuerpo", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
     } else {
-        JOptionPane.showMessageDialog(this, "Seleccione un motivo para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Seleccione un parte cuerpo para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
     }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -210,7 +210,7 @@ public class FormularioParteCuerpo extends javax.swing.JPanel {
         if (parteCuerpo != null && !parteCuerpo.isEmpty()) {
             cargarParteCuerpo(parteCuerpo);
         } else {
-            System.out.println("No hay motivos para mostrar");
+            System.out.println("No hay parte cuerpo para mostrar");
         }
     }
     

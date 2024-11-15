@@ -201,7 +201,7 @@ public class FormularioZonaCuerpo extends javax.swing.JPanel {
             if (zonasCuerpo != null && !zonasCuerpo.isEmpty()) {
                 cargarZonasCuerpo(zonasCuerpo);
             } else {
-                System.out.println("No hay empleados");
+                System.out.println("No hay zonas");
             }
 
         }

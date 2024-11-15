@@ -153,7 +153,7 @@ public class AddTipoAccidente extends javax.swing.JFrame {
                 System.out.println("Tipo accidente creado exitosamente.");
                 formularioTipoAccidente.actualizarTabla();
             } else {
-                System.out.println("Hubo un error al crear el motivo.");
+                System.out.println("Hubo un error al crear el tipo accidente.");
             }
 
         dispose();   

@@ -147,10 +147,10 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
             modificarTipoAccidente.setVisible(true);
              actualizarTabla();
         } else {
-            JOptionPane.showMessageDialog(this, "Empleado no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Tipo accidente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
         }
     } else {
-        JOptionPane.showMessageDialog(this, "Selecciona un empleado", "Warning", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Selecciona un tipo accidente", "Warning", JOptionPane.WARNING_MESSAGE);
     }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -165,29 +165,29 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
     
     if (selectedRow >= 0) {
-        // Obtener el código del motivo desde la tabla
+        // Obtener el cï¿½digo del motivo desde la tabla
         Integer codigo = (Integer) jTable1.getValueAt(selectedRow, 0);
         
-        // Confirmar la eliminación
+        // Confirmar la eliminaciï¿½n
         int confirm = JOptionPane.showConfirmDialog(this,
-                "¿Estas seguro de que deseas eliminar el motivo con codigo " + codigo + "?",
-                "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+                "Â¿Estas seguro de que deseas eliminar el tipo accidente con codigo " + codigo + "?",
+                "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
         
         if (confirm == JOptionPane.YES_OPTION) {
-            // Llamar al método en MotivoController para eliminar el motivo
+            // Llamar al mï¿½todo en MotivoController para eliminar el motivo
             TipoAccidente tipoAccidente = tipoAccidenteController.extraer(codigo);
             if (tipoAccidente != null) {
                 boolean eliminado = tipoAccidenteController.eliminar(tipoAccidente);
                 if (eliminado) {
-                    JOptionPane.showMessageDialog(this, "Motivo eliminado con exito", "exito", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Tipo accidente eliminado con exito", "exito", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTabla(); // Actualizar la tabla para reflejar los cambios
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el motivo", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el tipo accidente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
     } else {
-        JOptionPane.showMessageDialog(this, "Seleccione un motivo para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Seleccione un tipo accidente para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
     }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -207,7 +207,7 @@ public class FormularioTipoAccidente extends javax.swing.JPanel {
         if (tipoAccidente != null && !tipoAccidente.isEmpty()) {
             cargarTipoAccidente(tipoAccidente);
         } else {
-            System.out.println("No hay motivos para mostrar");
+            System.out.println("No hay tipo accidentes para mostrar");
         }
     }
     
